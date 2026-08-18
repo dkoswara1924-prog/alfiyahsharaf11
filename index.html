@@ -555,7 +555,7 @@
                     // INTERNAL KNOWLEDGE BASE FOR OFFLINE FALLBACK
                     internalKnowledge: [
                         {
-                            keywords: ['mau nanya', 'nanya', 'permisi', 'halo', 'hai', 'assalamualaikum', 'p', 'ping', 'tanya', 'bertanya'],
+                            keywords: ['mau nanya', 'nanya', 'permisi', 'halo', 'hai', 'assalamualaikum', 'ping', 'bertanya'],
                             response: `Na'am, ahlan wa sahlan! Silakan tanyakan apa saja seputar ilmu Nahwu dan Sharaf (seperti Isim Maqshur, Mamdud, Bab Ta'nits, Tatsniyah, Jamak, Kaidah Itba', atau I'rab bait Alfiyyah). Saya siap membantu mendiskusikannya berdasarkan Syarah Awdhahul Masalik karya Ibnu Hisyam.`
                         },
                         {
@@ -563,7 +563,59 @@
                             response: `Afwan / Sama-sama! Semoga ilmunya berkah dan menambah pemahaman dalam mempelajari tata bahasa Arab klasik. Jika ada pertanyaan lain, jangan ragu untuk bertanya lagi.`
                         },
                         {
-                            keywords: ['maqshur', 'maqsur', 'makshur', 'apa itu maqshur', 'nama maqshur', 'pengertian maqshur'],
+                            keywords: ['i\'rab bait', 'irab bait', 'عَلَامَةُ التَّأْنِيثِ', 'علامة التأنيث', 'analisis i\'rab bait'],
+                            response: `<strong>Analisis I'rab Bait Alfiyyah:</strong><br>
+                            <span class="arabic-text text-lg font-bold text-amber-300">عَلَامَةُ التَّأْنِيثِ تَاءٌ أَوْ أَلِفْ</span><br><br>
+                            • <strong>عَلَامَةُ</strong> : <em>Mubtada'</em> (مبتدأ) marfu' dengan tanda Dhommah Zhahirah di akhirnya. Berkedudukan pula sebagai <em>Mudhaf</em> (مضاف).<br>
+                            • <strong>التَّأْنِيثِ</strong> : <em>Mudhaf 'Ilaih</em> (مضاف إليه) majrur dengan tanda Kasrah Zhahirah di akhirnya.<br>
+                            • <strong>تَاءٌ</strong> : <em>Khabar Mubtada'</em> (خبر المبتدأ) marfu' dengan tanda Dhommah Zhahirah (tanwin).<br>
+                            • <strong>أَوْ</strong> : <em>Harf 'Athaf</em> (حرف عطف) berfungsi sebagai pilihan/rincian (للتخيير/التقسيم), مبني على السكون.<br>
+                            • <strong>أَلِفْ</strong> : <em>Ma'thuf</em> (معطوف) di-'athaf-kan kepada kata <em>تَاءٌ</em>, berstatus marfu' dengan Dhommah Muqaddarah, disukunkan huruf akhirnya karena menjaga rima waqaf bait syi'ir.`
+                        },
+                        {
+                            keywords: ['basrah', 'kufah', 'madd al-maqshur', 'perbedaan basrah', 'madd al-maqsur'],
+                            response: `<strong>Perbedaan Ulama Basrah vs. Kufah tentang Madd al-Maqshur:</strong><br><br>
+                            <strong>1. Madzhab Kufah (Membolehkan):</strong><br>
+                            Ulama Kufah membolehkan memanjangkan Isim Maqshur menjadi Mamdud dalam puisi (*Madd al-Maqshur*) karena darurat syi'ir. Dalil utama mereka adalah Syahid 537:<br>
+                            <span class="arabic-text text-base">فَلَا فَقْرٌ يَدُومُ وَلَا غِنَاءُ</span><br>
+                            Kata <em>غِنَاءُ</em> di sini asalnya adalah Isim Maqshur <em>غِنًى</em> (kekayaan), lalu dipanjangkan menjadi <em>غِنَاءُ</em> demi rima.<br><br>
+                            <strong>2. Madzhab Basrah (Melarang Keras):</strong><br>
+                            Ulama Basrah menolak dalil tersebut dan menakwilkan bahwa kata <em>غِنَاء</em> pada syair tersebut bukan masdar dari fi'il <em>غَنِيَ</em> (yang maqshur), melainkan masdar dari fi'il <em>غَانَيْتُ</em> yang wazannya memang bermakna mamdud sejak awal.<br><br>
+                            <strong>3. Penilaian Ibnu Hisyam (Awdhahul Masalik):</strong><br>
+                            Ibnu Hisyam mematahkan takwil Ulama Basrah dan menyifatinya sebagai takwil yang sangat dipaksakan (*Ta'assuf*). Beliau cenderung mendukung kelonggaran Madzhab Kufah dalam konteks *Dharurah Syi'ir*.`
+                        },
+                        {
+                            keywords: ['sahraa', 'sahra', 'صَحْرَاءُ', 'صجراء', 'dinamakan alif ta\'nits mamdudah', 'kenapa sahraa'],
+                            response: `<strong>Mengapa Kata 'صَحْرَاءُ' Dinamakan Alif Ta'nits Mamdudah?</strong><br><br>
+                            • <strong>Struktur Kata:</strong> Kata <em>صَحْرَاءُ</em> ber-wazan <strong>فَعْلَاءُ</strong> (Fa'laa').<br>
+                            • <strong>Analisis Fonetik Sharaf:</strong> Asal kata ini memiliki dua huruf Alif tambahan (<em>Alif Za'idah</em>) setelah huruf Ro' dasar. Untuk menghindari bertemunya dua Alif sukun (*Iltiqa' As-Sakinain*), Alif kedua diubah menjadi <strong>Hamzah (ء)</strong>.<br>
+                            • <strong>Fungsi Ta'nits:</strong> Alif-Hamzah ini murni berfungsi sebagai penanda feminin (<em>Alif Ta'nits Mamdudah</em>), bukan huruf bawaan asli akar kata (seperti *قَرَأَ -> قَرَّاءٌ*).`
+                        },
+                        {
+                            keywords: ['posisi i\'rab', 'posisi irab', '3 posisi', 'tiga posisi', 'contoh analisis i\'rab kata isim maqshur', 'rafa', 'nashab', 'jar'],
+                            response: `<strong>Contoh Analisis I'rab Isim Maqshur dalam 3 Posisi (Rafa', Nashab, Jar):</strong><br><br>
+                            Isim Maqshur (contoh: <em>الفَتَى</em> - Al-Fata) seluruh tanda I'rab-nya tersembunyi (*Muqaddarah*) karena udzur artikulasi (*At-Ta'adzdzur*):<br><br>
+                            <strong>1. Posisi Rafa' (Sebagai Fa'il):</strong><br>
+                            • Kalimat: <span class="arabic-text text-base">جَاءَ الْفَتَى</span> (Pemuda itu telah datang).<br>
+                            • I'rab: <strong>الْفَتَى</strong> = <em>Fa'il</em> marfu', tanda rafa'-nya adalah <strong>Dhommah Muqaddarah</strong> di atas huruf Alif, terhalang oleh *At-Ta'adzdzur*.<br><br>
+                            <strong>2. Posisi Nashab (Sebagai Maf'ul Bih):</strong><br>
+                            • Kalimat: <span class="arabic-text text-base">رَأَيْتُ الْفَتَى</span> (Saya melihat pemuda itu).<br>
+                            • I'rab: <strong>الْفَتَى</strong> = <em>Maf'ul Bih</em> manshub, tanda nashab-nya adalah <strong>Fathah Muqaddarah</strong> di atas huruf Alif, terhalang oleh *At-Ta'adzdzur*.<br><br>
+                            <strong>3. Posisi Jar (Majrur Harf Jar):</strong><br>
+                            • Kalimat: <span class="arabic-text text-base">مَرَرْتُ بِالْفَتَى</span> (Saya melewati pemuda itu).<br>
+                            • I'rab: <strong>الْفَتَى</strong> = <em>Isim Majrur</em> dengan huruf Ba', tanda jar-nya adalah <strong>Kasrah Muqaddarah</strong> di atas huruf Alif, terhalang oleh *At-Ta'adzdzur*.`
+                        },
+                        {
+                            keywords: ['ilbaa', 'ilba', 'علباء', 'عِلْبَاءٌ', 'tatsniyahkan kata', 'tatsniyah ilbaa'],
+                            response: `<strong>Tata Cara Tatsniyah Kata 'عِلْبَاءٌ' menurut Ahli Nahwu:</strong><br><br>
+                            • <strong>Tipe Hamzah:</strong> Hamzah pada kata <em>عِلْبَاءٌ</em> (urat leher) adalah <strong>Hamzah Ilhaq</strong> (penyeimbang wazan agar setara dengan wazan *قِرْطَاسٌ*).<br>
+                            • <strong>Hukum Tatsniyah (Syarah Awdhahul Masalik):</strong> Boleh dibaca dalam 2 cara:<br>
+                            1. <strong>Opsi Unggul (Rajih / Tashghih):</strong> Mempertahankan Hamzah -> <span class="arabic-text text-base font-bold">عِلْبَاءَانِ</span> (Ilbaa'aani).<br>
+                            2. <strong>Opsi Sekunder (Marjuh / I'lal):</strong> Mengubah Hamzah menjadi Wawu -> <span class="arabic-text text-base font-bold">عِلْبَاوَانِ</span> (Ilbaawaani).<br><br>
+                            <em>Catatan Akademis:</em> Imam Sibawaih mencatat bahwa lisan Arab kuno justru lebih sering melafalkan bentuk Wawu (*Ilbaawaani*) pada kata ini dibanding kata *Kisaa'*.`
+                        },
+                        {
+                            keywords: ['maqshur', 'maqsur', 'makshur', 'apa itu maqshur', 'pengertian maqshur'],
                             response: `<strong>Isim Maqshur (الْمَقْصُورُ)</strong> adalah setiap Isim Mu'rab yang diakhiri oleh huruf <strong>Alif Lazimah (Alif tetap)</strong> dan huruf sebelumnya berharakat Fathah.<br><br>
                             <strong>Contoh Utama:</strong><br>
                             • <em>الفَتَى</em> (Al-Fata - Pemuda)<br>
@@ -1291,15 +1343,30 @@
                         }
 
                     } catch (e) {
-                        // Intelligent fallback using internal knowledge
+                        // Smart matching function with word boundary protection
                         const lowerQ = q.toLowerCase();
-                        const internalMatch = this.internalKnowledge.find(item => 
-                            item.keywords.some(kw => lowerQ.includes(kw))
-                        );
+                        let internalMatch = null;
+
+                        for (const item of this.internalKnowledge) {
+                            const isMatch = item.keywords.some(kw => {
+                                const kwLower = kw.toLowerCase();
+                                if (kwLower.length <= 3) {
+                                    // Use word boundary for short keywords to prevent false sub-string matches
+                                    const regex = new RegExp(`\\b${kwLower}\\b`, 'i');
+                                    return regex.test(lowerQ);
+                                }
+                                return lowerQ.includes(kwLower);
+                            });
+
+                            if (isMatch) {
+                                internalMatch = item;
+                                break;
+                            }
+                        }
 
                         let errorResponse = internalMatch 
                             ? internalMatch.response
-                            : `Tentu! Silakan tanyakan hal spesifik seputar <strong>Isim Maqshur, Isim Mamdud, Bab Ta'nits, Tatsniyah, Jamak, Kaidah Itba', atau I'rab bait Alfiyyah Ibnu Malik</strong>. Saya siap menjelaskan secara rinci.`;
+                            : `Tentu! Silakan tanyakan hal spesifik seputar <strong>Isim Maqshur, Isim Mamdud, Bab Ta'nits, Tatsniyah, Jamak, Kaidah Itba', atau I'rab bait Alfiyyah Ibnu Malik</strong>. Saya siap menjelaskan secara rinci berdasarkan Syarah Awdhahul Masalik karya Ibnu Hisyam.`;
                         
                         this.aiHistory.push({
                             role: 'model',
