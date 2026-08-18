@@ -425,61 +425,24 @@
                 <div class="bg-emerald-900 text-parchment-100 p-6 rounded-2xl border border-amber-500/40 shadow-lg space-y-2">
                     <div class="flex items-center justify-between flex-wrap gap-2">
                         <span class="inline-block px-3 py-1 bg-amber-600/30 border border-amber-500/50 text-amber-300 text-xs font-semibold rounded-full">
-                            <i class="fa-solid fa-brain mr-1.5"></i> Asisten Pakar Nahwu & Sharaf (Gemini AI + Syarah Engine)
-                        </span>
-                        <div class="flex items-center space-x-2">
-                            <button @click="showApiKeyModal = !showApiKeyModal" class="text-xs bg-amber-500/20 hover:bg-amber-500/40 text-amber-300 px-3 py-1 rounded-lg border border-amber-500/40 flex items-center transition">
-                                <i class="fa-solid fa-key mr-1.5"></i> {{ userApiKey ? 'API Key Terpasang' : 'Set API Key' }}
-                            </button>
-                            <button v-if="aiHistory.length" @click="clearAiHistory" class="text-xs text-amber-300/70 hover:text-amber-300 underline flex items-center">
-                                <i class="fa-solid fa-trash-can mr-1"></i> Bersihkan
-                            </button>
-                        </div>
-                    </div>
-                    <h2 class="text-2xl sm:text-3xl font-bold font-serif text-amber-300 flex items-center">
-                        <i class="fa-solid fa-scroll mr-3 text-amber-400"></i> مًسَاعِدُ النَّحْوِ (Tanya AI Sharaf)
-                    </h2>
-                    <p class="text-xs sm:text-sm text-parchment-200">
-                        Ajukan pertanyaan seputar Matan Alfiyyah Ibnu Malik, Syarah Awdhahul Masalik (Ibnu Hisyam), kaidah I'rab, wazan, atau contoh dalil Al-Qur'an & Syi'ir.
-                    </p>
-                </div>
-
-                <!-- API Key Config Modal / Panel -->
-                <div v-if="showApiKeyModal" class="bg-amber-500/10 border-2 border-amber-500/40 rounded-2xl p-4 space-y-2 text-xs">
-                    <div class="flex items-center justify-between font-bold text-amber-700 dark:text-amber-300">
-                        <span><i class="fa-solid fa-shield-halved mr-1"></i> Pengaturan Gemini API Key (Opsional)</span>
-                        <button @click="showApiKeyModal = false" class="text-gray-400 hover:text-amber-400">&times;</button>
-                    </div>
-                    <p class="text-gray-600 dark:text-parchment-300 leading-relaxed">
-                        Aplikasi ini memiliki <strong>Pustaka Syarah Internal (Offline)</strong> untuk menjawab konsep dasar seperti Isim Maqshur, Mamdud, Ta'nits, Itba', dll. Jika Anda ingin bertanya bebas tanpa batas ke Gemini AI, masukkan API Key gratis dari <a href="https://aistudio.google.com/app/apikey" target="_blank" class="underline text-amber-600 font-bold">Google AI Studio</a>.
-                    </p>
-                    <div class="flex gap-2 pt-1">
-                        <input type="password" v-model="userApiKey" placeholder="Masukkan Gemini API Key Anda (AIzaSy...)..." class="flex-1 p-2 bg-white dark:bg-emerald-950 border border-amber-600/40 rounded-lg text-xs">
-                        <button @click="saveApiKey" class="px-4 bg-amber-600 hover:bg-amber-500 text-emerald-950 font-bold rounded-lg transition">Simpan</button>
-                    </div>
-                </div>
-
-                <!-- Quick Suggested Prompts -->
-
-                        <span class="inline-block px-3 py-1 bg-amber-600/30 border border-amber-500/50 text-amber-300 text-xs font-semibold rounded-full">
-                            <i class="fa-solid fa-brain mr-1.5"></i> Asisten Pakar Nahwu & Sharaf (Gemini AI)
+                            <i class="fa-solid fa-brain mr-1.5"></i> Asisten Pakar Nahwu & Sharaf Interaktif (Gemini AI)
                         </span>
                         <button v-if="aiHistory.length" @click="clearAiHistory" class="text-xs text-amber-300/70 hover:text-amber-300 underline flex items-center">
                             <i class="fa-solid fa-trash-can mr-1"></i> Bersihkan Obrolan
                         </button>
                     </div>
                     <h2 class="text-2xl sm:text-3xl font-bold font-serif text-amber-300 flex items-center">
-                        <i class="fa-solid fa-scroll mr-3 text-amber-400"></i> مًسَاعِدُ النَّحْوِ (Tanya AI Sharaf)
+                        <i class="fa-solid fa-scroll mr-3 text-amber-400"></i> مًسَاعِدُ النَّحْوِ (Tanya AI Sharaf Dinamis)
                     </h2>
                     <p class="text-xs sm:text-sm text-parchment-200">
-                        Ajukan pertanyaan seputar Matan Alfiyyah Ibnu Malik, Syarah Awdhahul Masalik (Ibnu Hisyam), kaidah I'rab, wazan, atau contoh dalil Al-Qur'an & Syi'ir.
+                        Ajukan pertanyaan dinamis seputar Matan Alfiyyah Ibnu Malik, Syarah Awdhahul Masalik (Ibnu Hisyam), analisis I'rab, wazan, atau contoh dalil Al-Qur'an & Syi'ir.
                     </p>
                 </div>
 
-                <!-- Quick Suggested Prompts -->
+                <!-- Quick Suggested Dynamic Prompts -->
                 <div class="bg-white dark:bg-emerald-900/40 p-4 rounded-2xl border border-amber-600/30 shadow-sm space-y-2">
                     <span class="text-xs font-bold text-amber-700 dark:text-amber-400 flex items-center">
-                        <i class="fa-solid fa-lightbulb mr-1.5"></i> Pertanyaan Populer (Klik untuk Bertanya):
+                        <i class="fa-solid fa-lightbulb mr-1.5"></i> Contoh Pertanyaan Dinamis (Klik untuk Bertanya):
                     </span>
                     <div class="flex flex-wrap gap-2">
                         <button v-for="(prompt, pIdx) in suggestedPrompts" :key="pIdx"
@@ -498,9 +461,9 @@
                         <div class="w-16 h-16 mx-auto rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500 text-3xl">
                             <i class="fa-solid fa-book-quran"></i>
                         </div>
-                        <h3 class="text-base font-bold font-serif text-amber-700 dark:text-amber-300">Belum Ada Diskusi</h3>
+                        <h3 class="text-base font-bold font-serif text-amber-700 dark:text-amber-300">Diskusi Tanya Jawab Dinamis</h3>
                         <p class="text-xs text-gray-500 dark:text-parchment-300 max-w-md mx-auto">
-                            Tanyakan apa saja seputar Bab Ta'nits, Wazan Maqshurah & Mamdud, Tatsniyah, Jamak, Kaidah Itba', atau Dharurah Syi'ir dalam Alfiyyah Ibnu Malik.
+                            Tanyakan apa saja seputar Bab Ta'nits, Wazan Maqshurah & Mamdud, Tatsniyah, Jamak, Kaidah Itba', atau analisis I'rab dalam Alfiyyah Ibnu Malik.
                         </p>
                     </div>
 
@@ -529,7 +492,7 @@
                     <!-- AI Loading Pulse -->
                     <div v-if="aiLoading" class="self-start bg-parchment-50 dark:bg-emerald-950 border border-amber-500/30 p-4 rounded-2xl rounded-tl-none flex items-center space-x-3 text-amber-400 animate-pulse">
                         <i class="fa-solid fa-circle-notch fa-spin text-lg"></i>
-                        <span class="text-xs font-serif font-bold">Menyusun jawaban berdasarkan Syarah Awdhahul Masalik...</span>
+                        <span class="text-xs font-serif font-bold">Menyusun jawaban dinamis berdasarkan Syarah Awdhahul Masalik...</span>
                     </div>
 
                 </div>
@@ -539,7 +502,7 @@
                     <div class="relative flex-1">
                         <textarea v-model="aiQuery" 
                             @keydown.enter.exact.prevent="submitAiQuestion"
-                            placeholder="Ketik pertanyaan Nahwu/Sharaf Anda di sini (Tekan Enter untuk mengirim)..." 
+                            placeholder="Ketik pertanyaan dinamis Nahwu/Sharaf Anda di sini (Tekan Enter untuk mengirim)..." 
                             rows="2"
                             :disabled="aiLoading"
                             class="w-full p-3.5 pr-10 bg-white dark:bg-emerald-900 border-2 border-amber-600/50 rounded-xl text-xs sm:text-sm text-parchment-900 dark:text-parchment-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"></textarea>
@@ -581,17 +544,15 @@
                     aiQuery: '',
                     aiLoading: false,
                     aiHistory: [],
-                    userApiKey: localStorage.getItem('syarah_gemini_key') || '',
-                    showApiKeyModal: false,
                     suggestedPrompts: [
-                        "Isim maqshur itu apa sih?",
-                        "Mengapa Muannats membutuhkan tanda sedangkan Mudzakkar tidak?",
-                        "Sebutkan 5 wazan kata sifat yang tidak membutuhkan Ta' marbuthah!",
-                        "Bagaimana cara men-tatsniyahkan Isim Maqshur 4 huruf?",
-                        "Jelaskan 6 syarat mutlak penerapan kaidah Itba' pada Jamak Mu'annats!"
+                        "Bagaimana analisis I'rab bait 'عَلَامَةُ التَّأْنِيثِ تَاءٌ أَوْ أَلِفْ'?",
+                        "Jelaskan perbedaan mendasar antara Ulama Basrah dan Kufah tentang Madd al-Maqshur!",
+                        "Mengapa kata 'صَحْرَاءُ' dinamakan Alif Ta'nits Mamdudah?",
+                        "Buatkan contoh analisis I'rab kata Isim Maqshur dalam 3 posisi I'rab (Rafa', Nashab, Jar)!",
+                        "Bagaimana cara men-tatsniyahkan kata 'عِلْبَاءٌ' menurut para ahli Nahwu?"
                     ],
 
-                    // INTERNAL KNOWLEDGE BASE FOR OFFLINE / FALLBACK RESPONSES
+                    // INTERNAL KNOWLEDGE BASE FOR OFFLINE FALLBACK
                     internalKnowledge: [
                         {
                             keywords: ['maqshur', "maqsur", 'nama maqshur', 'apa itu maqshur', 'pengertian maqshur'],
@@ -618,7 +579,6 @@
                             4. <strong>Hamzah Ilhaq:</strong> Penyeimbang wazan (contoh: <em>عِلْبَاءٌ</em>).`
                         },
                         {
-                            category: 'ta\'nits',
                             keywords: ['ta\'nits', 'tanits', 'muannats', 'gender', 'perempuan', 'kenapa muannats'],
                             response: `<strong>Bab Ta'nits (التَّأْنِيثُ) dalam Bahasa Arab:</strong><br><br>
                             <strong>Filosofi Dasar Ibnu Hisyam (Awdhahul Masalik):</strong><br>
@@ -640,10 +600,523 @@
                             3. <strong>Salim al-'Ain</strong> (huruf tengah bukan Wawu/Ya').<br>
                             4. <strong>Sakin al-'Ain</strong> (huruf tengah bersukun pada bentuk mufrad).<br>
                             5. Berstatus <strong>Mu'annats</strong> (feminin).<br>
-                            6. Bebas dari Tsiqal (keberatan artikulasi).<br><br>
-                            <strong>Contoh:</strong><br>
-                            • <em>سَجْدَةٌ -> سَجَدَاتٌ</em> (Wajib Itba' Fathah)<br>
-                            • <em>غُرْفَةٌ -> غُرُفَاتٌ / غُرْفَاتٌ / غُرَفَاتٌ</em> (Boleh 3 Wajah)`
+                            6. Bebas dari Tsiqal (keberatan artikulasi).`
+                        }
+                    ],
+
+                    // FULL 12 MODULE DATASET IN CORRECTED SYSTEMATIC ORDER
+                    modules: [
+                        {
+                            id: 1,
+                            title: "Bab Ta'nits: Mengungkap Rahasia Gender",
+                            shortTitle: "Bab Ta'nits",
+                            subtitle: "Filosofi Mudzakkar sebagai Asal (Ashl) & Muannats sebagai Cabang (Far')",
+                            arabicBadge: "باب التأنيث",
+                            baitsCount: 2,
+                            baits: "عَلَامَةُ التَّأْنِيثِ تَاءٌ أَوْ أَلِفْ ... وَفِي أَسَامٍ قَدَّرُوا التَّا كَالْكَتِفْ\nوَيُعْرَفُ التَّقْدِيرُ بِالضَّمِيرِ ... وَنَحْوِهِ كَالرَّدِّ فِي التَّصْغِيرِ",
+                            translations: [
+                                "Tanda Ta'nits (feminin) adalah Ta' atau Alif... Dan pada sebagian isim, orang Arab mengira-ngirakan (menyembunyikan) Ta', seperti pada kata Katif (bahu).",
+                                "Dan Ta' yang dikira-kirakan itu dapat diketahui dengan Dhamir (kata ganti)... dan sejenisnya seperti kembalinya Ta' pada bentuk Tashghir."
+                            ],
+                            syarahHtml: `
+                                <p><strong>1. Ketaatan pada Prinsip Asal & Cabang:</strong> Menurut Ibnu Hisyam dalam <em>Awdhahul Masalik</em>, hukum asal (fondasi) sebuah kata adalah <strong>Mudzakkar (maskulin)</strong>. Karena Muannats (feminin) berstatus sebagai cabang, ia membutuhkan <strong>tanda pembeda (العلامة)</strong>.</p>
+                                <p><strong>2. Dua Bentuk Ta' Pembeda:</strong></p>
+                                <ul>
+                                    <li><strong>Ta' Berharakat (Ta' Marbuthah):</strong> Khusus masuk pada Isim (contoh: <em>قَائِمَةٌ</em>). Saat waqaf dibaca Ha'.</li>
+                                    <li><strong>Ta' Sukun (Ta' Maftuhah):</strong> Khusus masuk pada Fi'il Madhi (contoh: <em>قَامَتْ</em>).</li>
+                                </ul>
+                                <p><strong>3. Rahasia Ta' Muqaddarah (Tersembunyi):</strong> Isim Muannats tidak semuanya memiliki tanda lahiriah. Kata seperti <em>كَتِفٌ</em> (bahu), <em>أَرْضٌ</em> (bumi), dan <em>عَيْنٌ</em> (mata) adalah Muannats Sima'i dengan Ta' tersembunyi. Keberadaannya dibuktikan melalui:</p>
+                                <ul>
+                                    <li>Kembalinya Dhamir Muannats: <em>الكَتِفُ أَلِمَتْ</em> (Bahu itu sakit).</li>
+                                    <li>Bentuk Tashghir (Pengecilan): Tashghir dari <em>كَتِفٌ</em> adalah <em>كُتَيْفَةٌ</em> (muncul Ta').</li>
+                                </ul>
+                            `,
+                            examples: [
+                                { word: "قَائِمَةٌ", wazan: "فَاعِلَةٌ", status: "Ta' Zahirah", note: "Ta' Marbuthah nyata penanda Muannats pada Isim" },
+                                { word: "كَتِفٌ", wazan: "فَعِلٌ", status: "Ta' Muqaddarah", note: "Muannats Sima'i, Ta' terbukti saat Tashghir (كُتَيْفَةٌ)" },
+                                { word: "حُبْلَى", wazan: "فُعْلَى", status: "Alif Maqshurah", note: "Tanda Ta'nits berupa Alif Pendek" },
+                                { word: "صَحْرَاءُ", wazan: "فَعْلَاءُ", status: "Alif Mamdudah", note: "Tanda Ta'nits berupa Alif Panjang diakhiri Hamzah" }
+                            ]
+                        },
+                        {
+                            id: 2,
+                            title: "Kaidah Ta' Pembeda pada 5 Wazan Sifat Khusus",
+                            shortTitle: "5 Wazan Sifat",
+                            subtitle: "Pengecualian Ta' Marbuthah pada Pola Fa'uul, Mif'aal, Mif'iil, Mif'al, dan Fa'iil",
+                            arabicBadge: "خَمْسَةُ أَوْزَانٍ",
+                            baitsCount: 3,
+                            baits: "وَلَا تَلِي فَارِقَةٌ فَعُولًا ... أَصْلًا وَلَا الْمِفْعَالَ وَالْمِفْعِيلا\nكَذَاكَ مِفْعَلٌ وَمَا تَلِيهِ تَا ... الْفَرْقِ مِنْ ذِي سُؤْدُدٍ فَمُبْتَدَعْ\nوَفَعِيلٌ بِمَعْنَى مَفْعُولٍ يَقِلّ ... فِيهِ التَّاءُ إِنْ تَبِعَ الْمَوْصُوفَ",
+                            translations: [
+                                "Ta' pembeda gender sama sekali tidak boleh mengiringi wazan Fa'uul, Mif'aal, maupun Mif'iil.",
+                                "Demikian pula wazan Mif'al. Dan wazan-wazan di atas apabila diiringi Ta' pembeda, maka hal itu adalah Syudzudz (anomali/penyimpangan).",
+                                "Dan wazan Fa'iil bermakna Maf'ool (pasif), sangat sedikit diiringi Ta' apabila menyebutkan kata yang disifatinya (Maushuf)."
+                            ],
+                            syarahHtml: `
+                                <p><strong>Analisis 5 Wazan Sifat Tanpa Ta' Marbuthah:</strong></p>
+                                <ol class="list-decimal pl-5 space-y-1">
+                                    <li><strong>فَعُولٌ (Bermakna Fa'il/Aktif):</strong> Contoh: <em>رَجُلٌ صَبُورٌ</em> dan <em>امْرَأَةٌ صَبُورٌ</em> (Wanita yang sangat sabar). Tidak boleh <em>صَبُورَةٌ</em>.</li>
+                                    <li><strong>مِفْعَالٌ (Mubalaghah):</strong> Contoh: <em>امْرَأَةٌ مِهْضَارٌ</em> (Wanita yang banyak bicara).</li>
+                                    <li><strong>مِفْعِيلٌ (Mubalaghah):</strong> Contoh: <em>امْرَأَةٌ مِعْطِيرٌ</em> (Wanita yang memakai wewangian).</li>
+                                    <li><strong>مِفْعَلٌ (Alat/Sifat):</strong> Contoh: <em>امْرَأَةٌ مِقْشَامٌ / مِغْشَمٌ</em>.</li>
+                                    <li><strong>فَعِيلٌ (Bermakna Maf'ool/Pasif):</strong> Jika Maushuf-nya disebutkan, wajib tanpa Ta'. Contoh: <em>رَأَيْتُ امْرَأَةً قَتِيلًا</em> (Saya melihat wanita yang terbunuh).</li>
+                                </ol>
+                                <p><strong>Hukum Khauf al-Ilbas (Mencegah Kesamaran):</strong> Apabila kata yang disifati (Maushuf) dibuang, maka huruf Ta' <strong>WAJIB dipasang</strong> untuk membedakan gender. Contoh: <em>مَرَرْتُ بِقَتِيلَةِ بَنِي فُلَانٍ</em> (Saya melewati wanita terbunuh dari Bani Fulan).</p>
+                            `,
+                            examples: [
+                                { word: "امْرَأَةٌ صَبُورٌ", wazan: "فَعُولٌ", status: "Bebas Ta'", note: "Bermakna Aktif (Sabar), Mudzakkar & Muannats sama" },
+                                { word: "امْرَأَةٌ مِهْضَارٌ", wazan: "مِفْعَالٌ", status: "Bebas Ta'", note: "Wazan Mubalaghah khusus tanpa Ta'" },
+                                { word: "امْرَأَةٌ قَتِيلٌ", wazan: "فَعِيلٌ", status: "Bebas Ta'", note: "Bermakna Pasif (Terbunuh) saat Maushuf tampak" },
+                                { word: "مَرَرْتُ بِقَتِيلَةٍ", wazan: "فَعِيلَةٌ", status: "Wajib Ta'", note: "Wajib Ta' karena Maushuf dibuang (Khauf al-Ilbas)" }
+                            ]
+                        },
+                        {
+                            id: 3,
+                            title: "Arsitektur 12 Wazan Alif Ta'nits Maqshurah",
+                            shortTitle: "12 Wazan Maqshurah",
+                            subtitle: "Eksplorasi Wazan-wazan Populer Alif Pendek Tanpa Hamzah",
+                            arabicBadge: "أَوْزَانُ المَقْصُورَةِ",
+                            baitsCount: 3,
+                            baits: "وَأَلِفُ التَّأْنِيثِ ذَاتُ قَصْرٍ ... وَذَاتُ مَدٍّ نَحْوُ أُنْثَى الْغُرِّ\nوَالاشْتِهَارُ فِي مَبَانِي الأُولَى ... يُبْدِيهِ وَزْنُ أَرَبَى وَالطُّولَى\nوَمَرَطَى وَوَزْنُ فَعْلَى جَمْعًا ... أَوْ مَصْدَرًا أَوْ صِفَةً كَشَبْعَى",
+                            translations: [
+                                "Alif Ta'nits itu ada yang Maqshurah (pendek) dan ada yang Mamdudah (panjang), seperti pada kata Unstaa dan Al-Ghurr.",
+                                "Ketenaran wazan-wazan kategori pertama (Maqshurah) ditunjukkan oleh wazan seperti Urabaa, Ath-Thuulaa,",
+                                "Marathaa, serta wazan Fa'laa sebagai Jamak, Masdar, atau Sifat seperti kata Syab'aa."
+                            ],
+                            syarahHtml: `
+                                <p>Ibnu Hisyam merincikan 12 Wazan Alif Ta'nits Maqshurah yang disepakati sebagai pola pembentukan kata feminin:</p>
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li><strong>فُعْلَى (Fu'laa):</strong> Bentuk muannats dari Af'ala (<em>الطُّولَى</em> muannats dari <em>الأَطْوَلُ</em>).</li>
+                                    <li><strong>فَعْلَى (Fa'laa):</strong> Berlaku pada 3 kategori: Sifat (<em>شَبْعَى</em>), Masdar (<em>دَعْوَى</em>), dan Jamak (<em>صَرْعَى</em> jamak dari Shari').</li>
+                                    <li><strong>فِعْلَى (Fi'laa):</strong> Contoh: <em>ذِكْرَى</em> (Masdar) dan <em>حِجْلَى</em> (Jamak).</li>
+                                    <li><strong>فُعَلَى (Fu'alaa):</strong> Contoh: <em>حُبَارَى</em> (Nama burung).</li>
+                                    <li><strong>فُعُلَّى (Fu'ulla):</strong> Contoh: <em>كُفُرَّى</em> (Kelopak mayang kurma).</li>
+                                </ul>
+                            `,
+                            examples: [
+                                { word: "الطُّولَى", wazan: "فُعْلَى", status: "Masyhur", note: "Muannats dari Al-Athwal" },
+                                { word: "شَبْعَى", wazan: "فَعْلَى", status: "Sifat", note: "Muannats dari Syab'aan (Kenyang)" },
+                                { word: "دَعْوَى", wazan: "فَعْلَى", status: "Masdar", note: "Masdar diakhiri Alif Maqshurah" },
+                                { word: "صَرْعَى", wazan: "فَعْلَى", status: "Jamak", note: "Jamak Taksir dari Shari'" }
+                            ]
+                        },
+                        {
+                            id: 4,
+                            title: "Arsitektur 17 Wazan Alif Ta'nits Mamdudah",
+                            shortTitle: "17 Wazan Mamdudah",
+                            subtitle: "Klasifikasi Wazan Alif Panjang Berakhir Hamzah Tambahan",
+                            arabicBadge: "أَوْزَانُ المَمْدُودَةِ",
+                            baitsCount: 3,
+                            baits: "لِمَدِّهَا فَعْلَاءُ أَفْعِلَاءُ ... مُثَّلَتِ العَيْنُ وَفَعْلَلَاءُ\nثُمَّ فُعَالَى فُعَلَاءُ فِعْلَا ... وَفُعُلَاءُ فُعْلَلَاءُ تُلَى\nوَمَفْعُولَاءُ فِعْلِياءُ مَعْ ... فُعّيْلَى فُعَّالَى بِنَقْلٍ يَقَعْ",
+                            translations: [
+                                "Untuk Alif Mamdudah wazannya adalah Fa'laa', Af'ilaa' dengan variasi harakat 'ain, serta Fa'lalaa'.",
+                                "Kemudian Fu'aalaa', Fu'alaa', Fi'laa', Fu'ulaa', dan Fu'lalaa' menyertainya.",
+                                "Serta Maf'uulaa', Fi'liyaa', disertai Fu''iilaa' dan Fu''aalaa' berdasarkan penukilan lisan Arab."
+                            ],
+                            syarahHtml: `
+                                <p><strong>Definisi Alif Ta'nits Mamdudah:</strong> Alif tambahan penanda muannats yang jatuh setelah Alif Za'idah lain, sehingga untuk menghindari bertemunya dua alif sukun, alif kedua diubah menjadi <strong>Hamzah (اء)</strong>.</p>
+                                <p>Ibnu Hisyam membedah 17 Wazan Mamdudah populer puitis:</p>
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li><strong>فَعْلَاءُ (Fa'laa'):</strong> Paling dominan (<em>صَحْرَاءُ</em>, <em>حَمْرَاءُ</em>).</li>
+                                    <li><strong>أَفْعِلَاءُ (Af'ilaa'):</strong> Contoh: <em>أَرْبِعَاءُ</em> (Hari Rabu).</li>
+                                    <li><strong>فُعَلَاءُ (Fu'alaa'):</strong> Contoh: <em>نُفَسَاءُ</em> (Wanita nifas) dan <em>شُعَرَاءُ</em>.</li>
+                                    <li><strong>فُعَالَى (Fu'aalaa'):</strong> Contoh: <em>قُرْفُصَاءُ</em> (Duduk berlutut).</li>
+                                </ul>
+                            `,
+                            examples: [
+                                { word: "صَحْرَاءُ", wazan: "فَعْلَاءُ", status: "Masyhur", note: "Padang pasir, bentuk muannats standar" },
+                                { word: "أَرْبِعَاءُ", wazan: "أَفْعِلَاءُ", status: "Masyhur", note: "Nama hari (Rabu) berpola Mamdudah" },
+                                { word: "قُرْفُصَاءُ", wazan: "فُعَالَى", status: "Nadirah", note: "Gaya duduk melingkarkan tangan di lutut" },
+                                { word: "نُفَسَاءُ", wazan: "فُعَلَاءُ", status: "Sifat", note: "Sifat khusus wanita pasca melahirkan" }
+                            ]
+                        },
+                        {
+                            id: 5,
+                            title: "Simetri Isim Maqshur Qiyasi & Konsep Nazhiir",
+                            shortTitle: "Maqshur Qiyasi",
+                            subtitle: "Penetapan Isim Maqshur Berdasarkan Padanan Kata Sehat (Nazhiir)",
+                            arabicBadge: "المَقْصُورُ القِيَاسِيُّ",
+                            baitsCount: 3,
+                            baits: "إِذَا اسْمٌ اسْتَوْجَبَ مِنْ قَبْلِ الطَّرَفْ ... فَتْحًا وَكَانَ ذَا نَظِيرٍ كَالْأَسَفْ\nفَلِنَظِيرِهِ الْمُعَلِّ الْآخِرِ ... ثُبُوتُ قَصْرٍ بِقِيَاسٍ ظَاهِرِ\nكَفِعَلٍ وَفُعَلٍ فِي جَمْعِ مَا ... كَفِعْلَةٍ وَفُعْلَةٍ نَحْوُ الدُّمَى",
+                            translations: [
+                                "Jika suatu isim menuntut harakat fathah sebelum huruf akhir, dan ia memiliki padanan (yang shahih) seperti kata Asaf,",
+                                "Maka bagi padanannya yang mu'tal akhir tersebut, ditetapkan hukum qashr (menjadi isim maqshur) berdasarkan qiyas (rumus baku) yang nyata.",
+                                "Seperti wazan Fi'al dan Fu'al pada bentuk jamak dari kata yang berwazan Fi'lah dan Fu'lah, seperti kata Ad-Dumaa."
+                            ],
+                            syarahHtml: `
+                                <p><strong>Konsep Nazhiir (Padanan Kata Sehat):</strong> Ibnu Hisyam menjelaskan bahwa penetapan Isim Maqshur Qiyasi (berumus baku) dilakukan dengan membandingkan pola kata yang huruf akhirnya sehat (Shahih Akhir).</p>
+                                <p><strong>3 Ranah Rumus Baku Isim Maqshur Qiyasi:</strong></p>
+                                <ol class="list-decimal pl-5 space-y-2">
+                                    <li><strong>Masdar Fi'il Lazim Berwazan <em>فَعِلَ - يَفْعَلُ</em>:</strong>
+                                        <br>Kata sehat: <em>أَسَفَ - يَأْسَفُ - أَسَفًا</em>.
+                                        <br>Kata mu'tal: <em>جَوِيَ - يَجْوَى - جَوًى</em> (Wajib Maqshur Qiyasi).
+                                    </li>
+                                    <li><strong>Jamak Taksir dari Isim Berwazan <em>فِعْلَةٌ</em> dan <em>فُعْلَةٌ</em>:</strong>
+                                        <br>Kata sehat: <em>كِسْرَةٌ -> كِسَرٌ</em> dan <em>غُرْفَةٌ -> غُرَفٌ</em>.
+                                        <br>Kata mu'tal: <em>مِرْيَةٌ -> مِرًى</em> dan <em>دُمْيَةٌ -> دُمًى</em>.
+                                    </li>
+                                    <li><strong>Isim Mufaddhal / Isim Makan wazan <em>مَفْعَلٌ</em>:</strong>
+                                        <br>Kata sehat: <em>مَخْزَنٌ</em> -> Kata mu'tal: <em>مَرْعًى</em>.
+                                    </li>
+                                </ol>
+                            `,
+                            examples: [
+                                { word: "جَوًى", wazan: "فَعَلٌ", status: "Qiyasi", note: "Masdar Mu'tal, Nazhiir-nya Asaf (أَسَفٌ)" },
+                                { word: "دُمًى", wazan: "فُعَلٌ", status: "Qiyasi", note: "Jamak dari Dumyah (دُمْيَةٌ), Nazhiir-nya Ghuraf" },
+                                { word: "مِرًى", wazan: "فِعَلٌ", status: "Qiyasi", note: "Jamak dari Miryah (مِرْيَةٌ), Nazhiir-nya Kisar" },
+                                { word: "مَرْعًى", wazan: "مَفْعَلٌ", status: "Qiyasi", note: "Isim Tempat, Nazhiir-nya Makhzan (مَخْزَنٌ)" }
+                            ]
+                        },
+                        {
+                            id: 6,
+                            title: "Isim Mamdud Qiyasi & Timbangan Leksikal",
+                            shortTitle: "Mamdud Qiyasi",
+                            subtitle: "Anatomi Rumus Baku Alif-Hamzah Melalui Pendekatan Kata Sehat",
+                            arabicBadge: "المَمْدُودُ القِيَاسِيُّ",
+                            baitsCount: 2,
+                            baits: "وَمَا اسْتَحَقَّ قَبْلَ آخِرٍ أَلِفْ ... فَالْمَدُّ فِي نَظِيرِهِ حَتْمًا عُرِفْ\nكَمَصْدَرِ الْفِعْلِ الَّذِي قَدْ بُدِئَا ... بِهَمْزِ وَصْلٍ كَارْعَوَى وَكَارْتَأَى",
+                            translations: [
+                                "Dan isim yang pada padanan kata sehatnya berhak menyandang alif sebelum huruf terakhir, maka hukum Madd (menjadi Mamdud) pada kata mu'talnya diketahui secara pasti.",
+                                "Seperti masdar dari fi'il yang diawali dengan Hamzah Washal, contohnya pada kata Ir'iwaa' dan Irti'aa'."
+                            ],
+                            syarahHtml: `
+                                <p><strong>Prinsip Utama Mamdud Qiyasi:</strong> Setiap Isim Mu'tal Akhir yang pada kata sehatnya (Nazhiir) memiliki <strong>Alif Za'idah sebelum huruf terakhir</strong>, maka pada kata mu'tal huruf terakhirnya diubah menjadi <strong>Hamzah (اء)</strong> secara Qiyasi.</p>
+                                <p><strong>4 Pola Baku Isim Mamdud Qiyasi:</strong></p>
+                                <ol class="list-decimal pl-5 space-y-1">
+                                    <li><strong>Masdar Fi'il Lebih 3 Huruf Awalan Hamzah Washal:</strong>
+                                        <br>Kata sehat: <em>اِحْتَرَامٌ</em>. Kata mu'tal: <em>إِرْعَوَى -> إِرْعِوَاءً</em>.
+                                    </li>
+                                    <li><strong>Masdar Fi'il Berwazan <em>فَاعَلَ</em>:</strong>
+                                        <br>Kata sehat: <em>قَاتَلَ -> قِتَالًا</em>. Kata mu'tal: <em>وَالَى -> وِلَاءً</em>.
+                                    </li>
+                                    <li><strong>Masdar Sifat Suara/Penyakit Berwazan <em>فُعَالٌ</em>:</strong>
+                                        <br>Contoh Suara: <em>رُغَاءٌ</em>. Contoh Penyakit: <em>مَشَاءٌ</em>.
+                                    </li>
+                                </ol>
+                            `,
+                            examples: [
+                                { word: "إِرْعِوَاءٌ", wazan: "إِفْعِلَاءٌ", status: "Qiyasi", note: "Masdar Hamzah Washal, Nazhiir-nya Ihktiraam" },
+                                { word: "وِلَاءٌ", wazan: "فِعَالٌ", status: "Qiyasi", note: "Masdar dari Waalaa, Nazhiir-nya Qitaal" },
+                                { word: "رُغَاءٌ", wazan: "فُعَالٌ", status: "Qiyasi", note: "Masdar suara binatang, Nazhiir-nya Shiraakh" },
+                                { word: "إِعْطَاءٌ", wazan: "إِفْعَالٌ", status: "Qiyasi", note: "Masdar dari A'thaa, Nazhiir-nya Ikraam" }
+                            ]
+                        },
+                        {
+                            id: 7,
+                            title: "Isim Maqshur & Mamdud Sama'i serta Dharurah Syi'ir",
+                            shortTitle: "Sama'i & Dharurah",
+                            subtitle: "Anomali Tanpa Nazhiir & Hukum Memperpendek/Memanjangkan Alif dalam Puisi",
+                            arabicBadge: "السَّمَاعِيُّ وَالضَّرُورَةُ",
+                            baitsCount: 2,
+                            baits: "وَالْعَادِمُ النَّظِيرِ ذَا قَصْرٍ وَذَا ... مَدٍّ بِنَقْلٍ كَالْحِجَا وَكَالْحِذَا\nوَقَصْرُ ذِي الْمَدِّ اضْطِرَارًا مُجْمَعُ ... عَلَيْهِ وَالْعَكْسُ بِخِلْفٍ يَقَعُ",
+                            translations: [
+                                "Dan kata yang tidak memiliki padanan (dari kata sahih), maka bentuk qashr dan madd-nya diketahui melalui nukilan (riwayat pendengaran/kamus), seperti Al-Hijaa dan Al-Hidzaa'.",
+                                "Memperpendek isim mamdud (menjadi maqshur) karena darurat syair adalah hal yang disepakati ulama; sedangkan sebaliknya (memanjangkan maqshur) terjadi perselisihan."
+                            ],
+                            syarahHtml: `
+                                <p><strong>1. Kelompok Sama'i (Murni Pendengaran/Kamus):</strong> Kata-kata mu'tal yang tidak memiliki wazan padanan kata sehat tergolong <strong>Sama'i</strong>.</p>
+                                <ul>
+                                    <li><em>الْحِجَا</em> (Akal pikiran) -> Maqshur Sama'i.</li>
+                                    <li><em>الْحِذَاءُ</em> (Sandal/Alas kaki) -> Mamdud Sama'i.</li>
+                                </ul>
+                                <p><strong>2. Hukum Dharurah Syi'ir (Darurat Penyair):</strong></p>
+                                <ul>
+                                    <li><strong>Qashr al-Mamdud (Memperpendek Mamdud -> Maqshur):</strong> Disepakati <strong>BOLEH (IJMA')</strong> demi menjaga rima/bahr syair. (Contoh: <em>صَنْعَاء</em> dipendekkan jadi <em>صَنْعَا</em>).</li>
+                                    <li><strong>Madd al-Maqshur (Memanjangkan Maqshur -> Mamdud):</strong> Ulama Basrah melarang, sedangkan <strong>Ulama Kufah membolehkan</strong> dengan dalil syair: <em>فَلَا فَقْرٌ يَدُومُ وَلَا غِنَاءُ</em> (Kata <em>غِنًى</em> dipanjangkan jadi <em>غِنَاءُ</em>).</li>
+                                </ul>
+                            `,
+                            examples: [
+                                { word: "الْحِجَا", wazan: "فِعَلٌ", status: "Maqshur Sama'i", note: "Bermakna akal, wajib riwayat hafalan" },
+                                { word: "الْحِذَاءُ", wazan: "فِعَالٌ", status: "Mamdud Sama'i", note: "Bermakna sandal, wajib riwayat hafalan" },
+                                { word: "صَنْعَا", wazan: "فَعْلَا", status: "Dharurah Boleh", note: "Asalnya Shana'aa' (Mamdud), dipendekkan dalam syair" },
+                                { word: "غِنَاءُ", wazan: "فِعَالٌ", status: "Dharurah Khilaf", note: "Asalnya Ghinan (Maqshur), dipanjangkan menurut Kufah" }
+                            ]
+                        },
+                        {
+                            id: 8,
+                            title: "Tata Cara Tatsniyah Isim Maqshur",
+                            shortTitle: "Tatsniyah Maqshur",
+                            subtitle: "Kaidah Perubahan Bentuk Dual (Mutsanna) pada Kata Berakhiran Alif Maqshurah",
+                            arabicBadge: "تَثْنِيَةُ المَقْصُورِ",
+                            baitsCount: 3,
+                            baits: "آخِرَ مَقْصُورٍ تُثَنَّى اجْعَلْهُ يَا ... إِنْ كَانَ عَنْ ثَلَاثَةٍ مُرْتَقِيَا\nكَذَا الَّذِي الْيَا أَصْلُهُ كَالْفَتَى ... وَالْجَامِدُ الَّذِي أُمِيلَ كَمَتَى\nفِي غَيْرِ ذَا تُقْلَبُ واوًا الأَلِفْ ... وَأَوْلِهَا مَا كَانَ قَبْلُ قَدْ عُرِفْ",
+                            translations: [
+                                "Jadikanlah huruf terakhir dari Isim Maqshur yang di-tatsniyah-kan sebagai huruf Ya (ي) - jika alifnya melebihi tiga huruf.",
+                                "Demikian pula (jadikan Ya) isim yang alifnya berasal dari Ya seperti Al-Fataa, serta isim jamid yang pelafalannya di-imalah-kan seperti kata Mataa.",
+                                "Selain dari kondisi tersebut, alif diubah menjadi Wawu (و), dan iringkanlah tanda mutsanna yang telah diketahui."
+                            ],
+                            syarahHtml: `
+                                <p><strong>A. Alif Diubah Menjadi Ya (ي):</strong></p>
+                                <ol class="list-decimal pl-5 space-y-1">
+                                    <li>Alif berada di urutan ke-4 atau lebih: <em>مُسْتَشْفَى -> مُسْتَشْفَيَانِ</em>, <em>حُبْلَى -> حُبْلَيَانِ</em>.</li>
+                                    <li>Alif 3 huruf yang asal kata dasarnya adalah Ya: <em>فَتَى -> فَتَيَانِ</em>.</li>
+                                    <li>Isim Jamid (Mabni) yang pelafalannya mengalami Imalah: <em>مَتَى -> مَتَيَانِ</em>.</li>
+                                </ol>
+                                <p><strong>B. Alif Diubah Menjadi Wawu (و):</strong></p>
+                                <p>Apabila Alif berada di urutan ke-3 dan asal kata dasarnya adalah Wawu: <em>عَصَا -> عَصَوَانِ</em>, <em>رَضَا -> رَضَوَانِ</em>.</p>
+                            `,
+                            examples: [
+                                { word: "فَتَيَانِ", wazan: "فَعَلَيَانِ", status: "Ubah Ya", note: "3 huruf asal Ya (الفَتَى)" },
+                                { word: "عَصَوَانِ", wazan: "فَعَلَوَانِ", status: "Ubah Wawu", note: "3 huruf asal Wawu (العَصَا)" },
+                                { word: "حُبْلَيَانِ", wazan: "فُعْلَيَانِ", status: "Ubah Ya", note: "Alif di urutan ke-4 (حُبْلَى)" },
+                                { word: "مُسْتَشْفَيَانِ", wazan: "مُسْتَفْعَلَيَانِ", status: "Ubah Ya", note: "Alif di urutan ke-6 (مُسْتَشْفَى)" }
+                            ]
+                        },
+                        {
+                            id: 9,
+                            title: "Tata Cara Tatsniyah Isim Mamdud",
+                            shortTitle: "Tatsniyah Mamdud",
+                            subtitle: "Membedah 4 Klasifikasi Hamzah dalam Perubahan Dual (Mutsanna)",
+                            arabicBadge: "تَثْنِيَةُ المَمْدُودِ",
+                            baitsCount: 2,
+                            baits: "وَمَا كَصَحْرَاءَ بِوَاوٍ ثُنِّيَا ... وَنَحْوُ عِلْبَاءٍ كِسَاءٍ وَحَيَا\nبِوَاوٍ أَوْ هَمْزٍ وَغَيْرُ مَا ذُكِرْ ... صُحِّحَ وَمَا شَذَّ عَلَى نَقْلٍ قُصِرْ",
+                            translations: [
+                                "Isim yang seperti Shahraa' (hamzah ta'nits), saat di-tatsniyah-kan diubah menjadi Wawu (Shahraawaani). Dan kata semisal 'Ilbaa', Kisaa', dan Hiyaa'...",
+                                "...Boleh di-tatsniyah-kan dengan Wawu atau Hamzah. Selain dari yang telah disebutkan, maka di-shahih-kan (hamzahnya wajib dipertahankan)."
+                            ],
+                            syarahHtml: `
+                                <p>Ibnu Hisyam membagi hukum Tatsniyah Isim Mamdud berdasarkan <strong>4 Tipe Asal-Usul Hamzah</strong>:</p>
+                                <ol class="list-decimal pl-5 space-y-2">
+                                    <li><strong>Hamzah Ta'nits (Feminin):</strong> <strong>WAJIB diubah menjadi Wawu</strong>. (<em>صَحْرَاءُ -> صَحْرَاوَانِ</em>).</li>
+                                    <li><strong>Hamzah Asli Akar Kata:</strong> <strong>WAJIB dipertahankan (Tetap Hamzah)</strong>. (<em>قَرَّاءٌ -> قَرَّاءَانِ</em>).</li>
+                                    <li><strong>Hamzah Ubahan dari Wawu/Ya Asli:</strong> <strong>BOLEH dua cara (Unggul Wawu)</strong>. (<em>كِسَاءٌ -> كِسَاوَانِ / كِسَاءَانِ</em>).</li>
+                                    <li><strong>Hamzah Ubahan Ilhaq (Penyeimbang Wazan):</strong> <strong>BOLEH dua cara (Unggul Hamzah)</strong>. (<em>عِلْبَاءٌ -> عِلْبَاءَانِ / عِلْبَاوَانِ</em>).</li>
+                                </ol>
+                            `,
+                            examples: [
+                                { word: "صَحْرَاوَانِ", wazan: "فَعْلَاوَانِ", status: "Wajib Wawu", note: "Hamzah Ta'nits feminin" },
+                                { word: "قَرَّاءَانِ", wazan: "فَعَّالَانِ", status: "Wajib Hamzah", note: "Hamzah Asli akar kata (قَرَأَ)" },
+                                { word: "كِسَاوَانِ", wazan: "فِعَالَاـنِ", status: "Rajih Wawu", note: "Ubahan dari Wawu asli (كِسَاءٌ)" },
+                                { word: "عِلْبَاءَانِ", wazan: "فِعْلَاءَانِ", status: "Rajih Hamzah", note: "Hamzah Ilhaq penyeimbang wazan" }
+                            ]
+                        },
+                        {
+                            id: 10,
+                            title: "Pembentukan Jamak Isim Maqshur",
+                            shortTitle: "Jamak Maqshur",
+                            subtitle: "Formulasi Jamak Mudzakkar Salim & Jamak Muannats Salim",
+                            arabicBadge: "جَمْعُ المَقْصُورِ",
+                            baitsCount: 3,
+                            baits: "وَاحْذِفْ مِنَ الْمَقْصُورِ فِي جَمْعٍ عَلَى ... حَدِّ الْمُثَنَّى مَا بِهِ تَكَمَّلَا\nوَالْفَتْحَ أَبْقِ مُشْعِرًا بِمَا حُذِفْ ... وَإِنْ جَمَعْتَهُ بِتَاءٍ وَأَلِفْ\nفَالْأَلِفَ اقْلِبْ قَلْبَهَا فِي التَّثْنِيَهُ ... وَتَاءَ ذِي التَّا أَلْزِمَنْ تَنْحِيَهْ",
+                            translations: [
+                                "Dan buanglah alif dari isim maqshur pada jamak yang mengikuti batas mutsanna (Jamak Mudzakkar Salim).",
+                                "Dan pertahankanlah fathah sebagai penunjuk atas alif yang dibuang. Dan jika engkau menjamaknya dengan Alif dan Ta' (Jamak Muannats Salim),",
+                                "Maka ubahlah alifnya sebagaimana perubahan pada Tatsniyah, dan Ta' marbuthah pada kata tersebut wajib dibuang."
+                            ],
+                            syarahHtml: `
+                                <p><strong>1. Jamak Mudzakkar Salim:</strong></p>
+                                <ul>
+                                    <li>Alif Maqshurah <strong>MUTLAK DIBUANG</strong>.</li>
+                                    <li>Harakat Fathah sebelum Alif <strong>tetap dipertahankan</strong> sebagai indikator huruf yang dibuang.</li>
+                                    <li>Contoh Rafa': <em>المُصْطَفَى -> المُصْطَفَوْنَ</em> (Al-Musthafawna). Tidak boleh dibaca Al-Musthafuwna.</li>
+                                </ul>
+                                <p><strong>2. Jamak Muannats Salim (Alif & Ta'):</strong></p>
+                                <ul>
+                                    <li>Alif diubah persis seperti kaidah Tatsniyah (diubah ke Ya jika 4 huruf/asal Ya, diubah ke Wawu jika 3 huruf asal Wawu).</li>
+                                    <li>Jika kata memiliki Ta' marbuthah, Ta' tersebut <strong>WAJIB DIBUANG</strong> terlebih dahulu. (Contoh: <em>فَتَاةٌ -> فَتَيَاتٌ</em>).</li>
+                                </ul>
+                            `,
+                            examples: [
+                                { word: "المُصْطَفَوْنَ", wazan: "المُفْتَعَوْنَ", status: "Jamak Mudzakkar", note: "Alif dibuang, fathah dipertahankan (Rafa')" },
+                                { word: "الأَعْلَوْنَ", wazan: "الأَفْعَوْنَ", status: "Jamak Mudzakkar", note: "Alif dibuang (الأَعْلَى -> الأَعْلَوْنَ)" },
+                                { word: "فَتَيَاتٌ", wazan: "فَعَلَيَاتٌ", status: "Jamak Muannats", note: "Ta' dibuang, Alif jadi Ya" },
+                                { word: "حُبْلَيَاتٌ", wazan: "فُعْلَيَاتٌ", status: "Jamak Muannats", note: "Alif ke-4 diubah jadi Ya" }
+                            ]
+                        },
+                        {
+                            id: 11,
+                            title: "Jamak Mu'annats Salim: Dinamika Harakat (Kaidah Itba')",
+                            shortTitle: "Kaidah Itba' Jamak",
+                            subtitle: "Bedah Bait 786-788 Alfiyyah & 6 Syarat Mutlak Keselarasan Harakat 'Ain dengan Fa'",
+                            arabicBadge: "إِتْبَاعُ عَيْنِ الجَمْعِ",
+                            baitsCount: 3,
+                            baits: "وَالسَّالِمَ الْعَيْنِ الثَّلَاثِي اسْماً أَنِلْ ... إِتْبَاعَ عَيْنٍ فَاءَهُ بِمَا شُكِلْ\nإِنْ سَاكِنَ الْعَيْنِ مُؤَنَّثاً بَدَا ... مُخْتَتِماً بِالتَّاءِ أَوْ مُجَرَّدَا\nوَسَكَّنِ الثَّالِيَ غَيْرَ الْفَتْحِ أَوْ ... خَفِّفْهُ بِالْفَتْحِ فَكُلٌّ قَدْ رُوِي",
+                            translations: [
+                                "Berikanlah hukum Itba'-keselarasan harakat-pada 'Ain mengikuti harakat Fa', untuk isim tsulatsi yang salim 'Ain-nya.",
+                                "Jika ia bersukun pada 'Ain-nya, berbentuk mu'annats, baik diakhiri dengan Ta' [Ta' Marbuthoh] ataupun sunyi darinya.",
+                                "Dan sukunkanlah huruf 'Ain yang mengikuti fa' selain fathah, atau ringankanlah ia dengan fathah, sebab setiap cara tersebut sungguh telah diriwayatkan."
+                            ],
+                            syarahHtml: `
+                                <p><strong>6 Syarat Mutlak Penerapan Kaidah Itba' (Keselarasan Harakat 'Ain):</strong></p>
+                                <ol class="list-decimal pl-5 space-y-1">
+                                    <li><strong>Isim (اسم):</strong> Wajib berbentuk Isim (kata benda), bukan sifat (contoh sifat yang gugur: <em>ضَخْمَةٌ -> ضَخْمَاتٌ</em> tetap sukun).</li>
+                                    <li><strong>Tsulatsi (ثلاثي):</strong> Terdiri dari 3 huruf mufrad-nya (contoh 4 huruf yang gugur: <em>جَمَلَاتٌ</em>).</li>
+                                    <li><strong>Salim al-'Ain (سالم العين):</strong> Huruf 'Ain (tengah) bukan huruf 'illat Wawu/Ya' (contoh yang gugur: <em>بَيْضَةٌ -> بَيْضَاتٌ</em>).</li>
+                                    <li><strong>Sakin al-'Ain (ساكن العين):</strong> Huruf 'Ain bersukun pada bentuk mufrad (contoh yang gugur: <em>شَجَرَةٌ -> شَجَرَاتٌ</em>).</li>
+                                    <li><strong>Mu'annats (مؤنث):</strong> Berstatus feminin baik hakiki maupun majazi, ada Ta' marbuthah atau tanpa Ta' (<em>دَعْدٌ / جَفْنَةٌ</em>).</li>
+                                    <li><strong>Tanpa Penghalang Sifat / Tsiqal.</strong></li>
+                                </ol>
+                                <p><strong>Rincian Hukum Harakat Fa' Kata:</strong></p>
+                                <ul>
+                                    <li><strong>Awal Fathah (Maftuh al-Fa'):</strong> <strong>WAJIB ITBA' (Fathah mutlak)</strong>. Contoh: <em>دَعْدٌ -> دَعَدَاتٌ</em>, <em>جَفْنَةٌ -> جَفَنَاتٌ</em>.</li>
+                                    <li><strong>Awal Dhommah / Kasrah (Madhmum / Maksur al-Fa'):</strong> <strong>BOLEH 3 WAJAH</strong> (Itba', Taskin/Sukun, & Takhfif Fathah). Contoh <em>خُطْوَةٌ</em>: <em>خُطُوَاتٌ</em> (Itba'), <em>خُطْوَاتٌ</em> (Sukun), <em>خُطَوَاتٌ</em> (Fathah). Contoh <em>كِسْرَةٌ</em>: <em>كِسِرَاتٌ</em>, <em>كِسْرَاتٌ</em>, <em>كِسَرَاتٌ</em>.</li>
+                                </ul>
+                            `,
+                            examples: [
+                                { word: "جَفَنَاتٌ", wazan: "فَعَلَاتٌ", status: "Wajib Itba'", note: "Maftuh al-Fa' (جَفْنَةٌ), 'ain wajib fathah" },
+                                { word: "خُطُوَاتٌ", wazan: "فُعُلَاتٌ", status: "Boleh 3 Wajah", note: "Madhmum al-Fa' (خُطْوَةٌ): Itba' Dhommah" },
+                                { word: "كِسِرَاتٌ", wazan: "فِعِرَاتٌ", status: "Boleh 3 Wajah", note: "Maksur al-Fa' (كِسْرَةٌ): Itba' Kasrah" },
+                                { word: "ضَخْمَاتٌ", wazan: "فَعْلَاتٌ", status: "Wajib Sukun", note: "Gugur Syarat 1 (Sifat, bukan Isim murni)" }
+                            ]
+                        },
+                        {
+                            id: 12,
+                            title: "Anatomi Pelarangan Itba' & Pengecualian pada Jamak Mu'annats Salim",
+                            shortTitle: "Pelarangan Itba' & Syadz",
+                            subtitle: "Membedah Bait 789-790 Alfiyyah, Konsep Tsiqal (Beban Artikulasi), Anomali Dzirwah & Zubyah, serta Lughah Tamim",
+                            arabicBadge: "مَنَعُوا إِتْبَاعَ نَحْوِ ذِرْوَهْ",
+                            baitsCount: 2,
+                            baits: "وَمَنَعُوا إِتْبَاعَ نَحْوِ ذِرْوَهْ ... وَزُبْيَةٍ وَشَدَّ كَسْرُ جِرْوَهْ\nوَنَادِرٌ أَوْ ذُو اضْطِرَارٍ غَيْرُ مَا ... قَدَّمْتُهُ أَوْ لِأُنَاسِ انْتَمَى",
+                            translations: [
+                                "Dan para ulama nahwu melarang (penerapan kaidah) Itba' pada kata sejenis dzirwah dan zubyah. Dan dianggap syadz (janggal) kasrah pada kata jirwah.",
+                                "Dan hal yang langka (Nadir), atau karena darurat penyair, adalah (pengecualian) dari apa yang telah aku sampaikan sebelumnya, atau dinisbatkan kepada sekelompok manusia (Lughah Tamim)."
+                            ],
+                            syarahHtml: `
+                                <p><strong>1. Rasionalitas Pelarangan Itba' (Konsep Tsiqal / Keberatan Artikulasi):</strong></p>
+                                <p>Ibnu Hisyam menjelaskan bahwa pelarangan Itba' pada bentuk tertentu didasari oleh pencegahan <em>Tsiqal</em> (beban lidah yang berat):</p>
+                                <ul>
+                                    <li><strong>Kata Sejenis <em>ذِرْوَةٌ</em> (Awal Kasrah + 'Ain Wawu):</strong> Dilarang Itba' (<em>ذِرِوَاتٌ</em>) karena bertemunya kasrah dengan Wawu sangat berat di lidah Arab. Hukumnya: <strong>Wajib Sukun (ذِرْوَاتٌ)</strong> atau <strong>Fathah Takhfif (ذِرَوَاتٌ)</strong>.</li>
+                                    <li><strong>Kata Sejenis <em>زُبْيَةٌ</em> (Awal Dhommah + 'Ain Ya'):</strong> Dilarang Itba' (<em>زُبُيَاتٌ</em>) karena bertemunya dhommah dengan Ya' sangat berat. Hukumnya: <strong>Wajib Sukun (زُبْيَاتٌ)</strong> atau <strong>Fathah Takhfif (زُبَيَاتٌ)</strong>.</li>
+                                </ul>
+                                <p><strong>2. Anomali Kata <em>جِرْوَةٌ</em> (Jirwah):</strong></p>
+                                <p>Kata <em>جِرْوَةٌ</em> (anak anjing) diriwayatkan dibaca <em>جِرِوَاتٌ</em> (dengan kasrah pada 'ain). Ibnu Malik menghukuminya sebagai <strong>Syadz (anomali)</strong> karena menyalahi larangan <em>tsiqal</em>.</p>
+                                <p><strong>3. Fenomena Dialek Lughah Tamim:</strong></p>
+                                <p>Kabilah <strong>Bani Tamim</strong> memiliki karakteristik melafalkan sukun mutlak pada huruf 'Ain seluruh Jamak Mu'annats Salim (misal: <em>سَجْدَاتٌ</em>, <em>جَفْنَاتٌ</em>, <em>كِسْرَاتٌ</em>), berbeda dari dialek <strong>Hijaz</strong> yang menggunakan kaidah Itba'.</p>
+                            `,
+                            examples: [
+                                { word: "ذِرْوَاتٌ / ذِرَوَاتٌ", wazan: "فِعْلَاتٌ / فِعَلَاتٌ", status: "Dilarang Itba'", note: "Kasrah + Wawu (Tsiqal), dilarang dziriwaat" },
+                                { word: "زُبْيَاتٌ / زُبَيَاتٌ", wazan: "فُعْلَاتٌ / فُعَلَاتٌ", status: "Dilarang Itba'", note: "Dhommah + Ya' (Tsiqal), dilarang zubuyaat" },
+                                { word: "جِرِوَاتٌ", wazan: "فِعِرَاتٌ", status: "Syadz", note: "Kasrah 'ain pada jirwah dinilai anomali oleh Ibnu Malik" },
+                                { word: "سَجْدَاتٌ (Lughah Tamim)", wazan: "فَعْلَاتٌ", status: "Dialek Tamim", note: "Bani Tamim menyukunkan 'ain secara mutlak" }
+                            ]
+                        }
+                    ],
+
+                    maqshurahWazans: [
+                        { wazanArab: "فُعْلَى", wazanLatin: "Fu'laa", exampleArab: "الطُّولَى", exampleMeaning: "Terpanjang (Muannats)", statusNote: "Muannats dari Al-Athwal" },
+                        { wazanArab: "فَعْلَى", wazanLatin: "Fa'laa (Sifat)", exampleArab: "شَبْعَى", exampleMeaning: "Kenyang (Muannats)", statusNote: "Muannats dari Syab'aan" },
+                        { wazanArab: "فَعْلَى", wazanLatin: "Fa'laa (Masdar)", exampleArab: "دَعْوَى", exampleMeaning: "Gugatan / Klaim", statusNote: "Masdar diakhiri Maqshurah" },
+                        { wazanArab: "فَعْلَى", wazanLatin: "Fa'laa (Jamak)", exampleArab: "صَرْعَى", exampleMeaning: "Orang-orang terpuruk", statusNote: "Jamak dari Shari'" },
+                        { wazanArab: "فِعْلَى", wazanLatin: "Fi'laa", exampleArab: "ذِكْرَى", exampleMeaning: "Peringatan", statusNote: "Masdar populer" },
+                        { wazanArab: "فُعَلَى", wazanLatin: "Fu'alaa", exampleArab: "حُبَارَى", exampleMeaning: "Burung Hubara", statusNote: "Nama jenis binatang" },
+                        { wazanArab: "فُعُلَّى", wazanLatin: "Fu'ulla", exampleArab: "كُفُرَّى", exampleMeaning: "Kelopak mayang kurma", statusNote: "Kata benda jamid" },
+                        { wazanArab: "فُعَّيْلَى", wazanLatin: "Fu'ayla", exampleArab: "خُلَّيْطَى", exampleMeaning: "Bercampur aduk", statusNote: "Masdar sifat" },
+                        { wazanArab: "فَعَلَى", wazanLatin: "Fa'alaa", exampleArab: "مَرَطَى", exampleMeaning: "Jalan cepat", statusNote: "Gaya berjalan" },
+                        { wazanArab: "إِرَبَى", wazanLatin: "Irabaa", exampleArab: "أَرَبَى", exampleMeaning: "Kemalangan", statusNote: "Wazan langka" },
+                        { wazanArab: "فِعِلَّى", wazanLatin: "Fi'illa", exampleArab: "سِبَطْرَى", exampleMeaning: "Jalan membungkuk", statusNote: "Sifat berjalan" },
+                        { wazanArab: "فُعَّالَى", wazanLatin: "Fu'aalaa", exampleArab: "شُقَارَى", exampleMeaning: "Tumbuhan merah", statusNote: "Nama tanaman" }
+                    ],
+
+                    mamdudahWazans: [
+                        { wazanArab: "فَعْلَاءُ", wazanLatin: "Fa'laa'", exampleArab: "صَحْرَاءُ", exampleMeaning: "Padang pasir", statusNote: "Paling dominan" },
+                        { wazanArab: "أَفْعِلَاءُ", wazanLatin: "Af'ilaa'", exampleArab: "أَرْبِعَاءُ", exampleMeaning: "Hari Rabu", statusNote: "Masyhurah" },
+                        { wazanArab: "فُعَلَاءُ", wazanLatin: "Fu'alaa'", exampleArab: "نُفَسَاءُ", exampleMeaning: "Wanita nifas", statusNote: "Sifat feminin" },
+                        { wazanArab: "فُعَالَى", wazanLatin: "Fu'aalaa'", exampleArab: "قُرْفُصَاءُ", exampleMeaning: "Duduk memeluk lutut", statusNote: "Gaya duduk" },
+                        { wazanArab: "فَعْلَلَاءُ", wazanLatin: "Fa'lalaa'", exampleArab: "عَقْرَبَاءُ", exampleMeaning: "Kalajengking betina", statusNote: "Isim jenis" },
+                        { wazanArab: "فِعْلَاءُ", wazanLatin: "Fi'laa'", exampleArab: "قِصَصَاءُ", exampleMeaning: "Hukuman qishash", statusNote: "Masdar" },
+                        { wazanArab: "فُعُلَاءُ", wazanLatin: "Fu'ulaa'", exampleArab: "قُفُشَاءُ", exampleMeaning: "Kecepatan", statusNote: "Langka" },
+                        { wazanArab: "مَفْعُولَاءُ", wazanLatin: "Maf'uulaa'", exampleArab: "مَشْيُوَخَاءُ", exampleMeaning: "Para tetua / Syekh", statusNote: "Jamak taksir" },
+                        { wazanArab: "فِعْلِيَاءُ", wazanLatin: "Fi'liyaa'", exampleArab: "كِبْرِيَاءُ", exampleMeaning: "Keagungan", statusNote: "Masdar abstrak" },
+                        { wazanArab: "فُعَّيْلَى", wazanLatin: "Fu'iilaa'", exampleArab: "حُثَّيثَاءُ", exampleMeaning: "Dorongan cepat", statusNote: "Masdar mubalaghah" },
+                        { wazanArab: "أَفْعُلَاءُ", wazanLatin: "Af'ulaa'", exampleArab: "أَرْبُعَاءُ", exampleMeaning: "Variasi Rabu", statusNote: "Dialek Kufah" },
+                        { wazanArab: "فُعْلَلَاءُ", wazanLatin: "Fu'lalaa'", exampleArab: "ذُهْلُولَاءُ", exampleMeaning: "Bahaya besar", statusNote: "Sifat bermakna berat" },
+                        { wazanArab: "فُعَّالَى", wazanLatin: "Fu''aalaa'", exampleArab: "قُبَّاعَاءُ", exampleMeaning: "Penakut", statusNote: "Sifat celaan" },
+                        { wazanArab: "فِعَالَى", wazanLatin: "Fi'aalaa'", exampleArab: "عِثَارَاءُ", exampleMeaning: "Debu terangkat", statusNote: "Isim alam" },
+                        { wazanArab: "فُعَيْلَاءُ", wazanLatin: "Fu'aylaa'", exampleArab: "قُريْراءُ", exampleMeaning: "Kesejukan mata", statusNote: "Masdar kegembiraan" },
+                        { wazanArab: "فَعَلَاءُ", wazanLatin: "Fa'alaa'", exampleArab: "جَمَلَاءُ", exampleMeaning: "Rombongan unta", statusNote: "Isim jamak" },
+                        { wazanArab: "فِعَلَاءُ", wazanLatin: "Fi'alaa'", exampleArab: "سِبَعَاءُ", exampleMeaning: "Binatang buas", statusNote: "Isim jenis" }
+                    ],
+
+                    quizQuestions: [
+                        {
+                            category: "Bab Ta'nits",
+                            question: "Mengapa hukum asal kata dalam Bahasa Arab adalah Mudzakkar dan Muannats merupakan cabang?",
+                            options: [
+                                "Karena Mudzakkar memerlukan tanda pembeda khusus",
+                                "Karena Mudzakkar bersifat ringan (khafif) dan tidak membutuhkan tanda pembeda",
+                                "Karena Muannats selalu dibaca Rofa'",
+                                "Karena Ibnu Malik memilih pendapat Ulama Kufah"
+                            ],
+                            correctAnswer: 1,
+                            selectedAnswer: null,
+                            explanation: "Dalam Syarah Awdhahul Masalik, Ibnu Hisyam menegaskan bahwa Mudzakkar adalah asal (ashl) karena lebih ringan dan tidak butuh tanda. Muannats adalah cabang (far') sehingga membutuhkan tanda pembeda (Al-Alamah)."
+                        },
+                        {
+                            category: "5 Wazan Sifat",
+                            question: "Manakah kalimat yang BENAR sesuai kaidah pencegahan Ta' Marbuthah pada 5 Wazan Sifat?",
+                            options: [
+                                "رَأَيْتُ امْرَأَةً صَبُورَةً",
+                                "رَأَيْتُ امْرَأَةً صَبُورًا",
+                                "رَأَيْتُ امْرَأَةً مِهْضَارَةً",
+                                "مَرَرْتُ بِقَتِيلِ بَنِي فُلَانٍ (tanpa menyebutkan imra'ah)"
+                            ],
+                            correctAnswer: 1,
+                            selectedAnswer: null,
+                            explanation: "Wazan Fa'uul bermakna aktif (Shabuur) tidak boleh diberi Ta' marbuthah jika Maushuf-nya (امْرَأَةً) disebutkan."
+                        },
+                        {
+                            category: "Isim Maqshur Qiyasi",
+                            question: "Kata 'جَوًى' (Masdar Mu'tal) dihukumi sebagai Isim Maqshur Qiyasi karena memiliki Nazhiir (padanan kata sehat) yaitu...",
+                            options: [
+                                "كِسْرَةٌ (Kisrah)",
+                                "أَسَفٌ (Asaf)",
+                                "مَخْزَنٌ (Makhzan)",
+                                "غُرْفَةٌ (Ghurfah)"
+                            ],
+                            correctAnswer: 1,
+                            selectedAnswer: null,
+                            explanation: "Sesuai bait Alfiyyah: 'وَكَانَ ذَا نَظِيرٍ كَالْأَسَفْ', Masdar dari Fi'il Lazim berwazan Fa'ila (جَوِيَ -> جَوًى) berpadanan dengan kata sehat Asaf (أَسَفٌ)."
+                        },
+                        {
+                            category: "Tatsniyah Isim Maqshur",
+                            question: "Bagaimanakah bentuk Dual (Mutsanna) dari kata 'حُبْلَى' (Hublaa)?",
+                            options: [
+                                "حُبْلَوَانِ (Hublawaani)",
+                                "حُبْلَيَانِ (Hublayaani)",
+                                "حُبْلَاتٌ (Hublaat)",
+                                "حُبْلَاءَانِ (Hublaa'aani)"
+                            ],
+                            correctAnswer: 1,
+                            selectedAnswer: null,
+                            explanation: "Kaidah mutlak menyatakan jika Alif Maqshurah berada di posisi urutan ke-4 atau lebih, maka Alif wajib diubah menjadi Ya (ي) saat Tatsniyah."
+                        },
+                        {
+                            category: "Jamak Isim Maqshur",
+                            question: "Bagaimanakah bentuk Jamak Mudzakkar Salim Rofa' dari kata 'المُصْطَفَى' (Al-Musthafai)?",
+                            options: [
+                                "المُصْطَفُونَ (Al-Musthafuwna)",
+                                "المُصْطَفَيُونَ (Al-Musthafayuwna)",
+                                "المُصْطَفَوْنَ (Al-Musthafawna)",
+                                "المُصْطَفِيْنَ (Al-Musthafiyna)"
+                            ],
+                            correctAnswer: 2,
+                            selectedAnswer: null,
+                            explanation: "Pada Jamak Mudzakkar Salim, Alif Maqshurah dibuang mutlak dan harakat fathah sebelum alif dipertahankan (المُصْطَفَوْنَ)."
+                        },
+                        {
+                            category: "Jamak Mu'annats Salim",
+                            question: "Mengapa kata 'ضَخْمَةٌ' tidak berlaku kaidah Itba' saat dijamakkan menjadi 'ضَخْمَاتٌ'?",
+                            options: [
+                                "Karena huruf tengahnya berharakat fathah",
+                                "Karena 'ضَخْمَةٌ' adalah kata sifat (sifat), bukan isim murni",
+                                "Karena huruf pertamanya berharakat dhommah",
+                                "Karena terdiri dari 4 huruf"
+                            ],
+                            correctAnswer: 1,
+                            selectedAnswer: null,
+                            explanation: "Syarat pertama kaidah Itba' adalah harus berstatus ISIM (kata benda murni). Kata Dakhmah adalah Sifat, sehingga 'ain-nya wajib sukun saat dijamakkan."
+                        },
+                        {
+                            category: "Pelarangan Itba'",
+                            question: "Mengapa kata 'ذِرْوَةٌ' dilarang dibaca Itba' (ذِرِوَاتٌ) saat dijamakkan?",
+                            options: [
+                                "Karena bertemunya harakat Kasrah dengan huruf Wawu menimbulkan Tsiqal (berat dikeluarkannya lidah)",
+                                "Karena kata tersebut berasal dari bahasa asing",
+                                "Karena huruf pertamanya berharakat fathah",
+                                "Karena dilarang oleh Kabilah Tamim saja"
+                            ],
+                            correctAnswer: 0,
+                            selectedAnswer: null,
+                            explanation: "Ibnu Hisyam menjelaskan bahwa memuat kasrah pada huruf 'Ain sebelum Wawu (seperti dziriwaat) menciptakan Tsiqal (beban artikulasi lidah), sehingga Itba' dilarang."
                         }
                     ]
                 }
@@ -736,66 +1209,20 @@
                     return 'bg-gray-100 dark:bg-emerald-950/40 text-gray-400 border-transparent opacity-60';
                 },
 
-                saveApiKey() {
-                    if (this.userApiKey.trim()) {
-                        localStorage.setItem('syarah_gemini_key', this.userApiKey.trim());
-                        this.showApiKeyModal = false;
-                    }
-                },
-
                 async submitAiQuestion() {
                     const q = this.aiQuery.trim();
                     if (!q || this.aiLoading) return;
 
-                    const lowerQ = q.toLowerCase();
                     this.aiQuery = '';
                     this.aiHistory.push({ role: 'user', text: q });
                     this.aiLoading = true;
                     this.$nextTick(() => this.scrollToChatBottom());
 
-                    // Check Internal Syarah Knowledge Engine First
-                    const internalMatch = this.internalKnowledge.find(item => 
-                        item.keywords.some(kw => lowerQ.includes(kw))
-                    );
-
-                    // If user didn't enter custom API key and we have an internal match, reply instantly!
-                    if (!this.userApiKey.trim() && internalMatch) {
-                        setTimeout(() => {
-                            this.aiHistory.push({
-                                role: 'model',
-                                text: internalMatch.response + `<br><br><em class="text-[11px] text-amber-600/70">(Dijawab secara instan via Pustaka Syarah Internal)</em>`
-                            });
-                            this.aiLoading = false;
-                            this.$nextTick(() => this.scrollToChatBottom());
-                        }, 500);
-                        return;
-                    }
-
-                    // Otherwise, call Gemini API using userApiKey or fallback
                     try {
-                        const systemPrompt = "Anda adalah Pakar Utama Ilmu Nahwu & Sharaf Abad Pertengahan Islam, spesialis membedah Syarah Awdhahul Masalik karya Ibnu Hisyam dan Matan Alfiyyah Ibnu Malik. Jawablah pertanyaan pengguna secara ilmiah, runtut, santun, dan komunikatif dalam Bahasa Indonesia. Sertakan tulisan Arab berharakat jika relevan.";
+                        const apiKey = "";
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
 
-                        const activeKey = this.userApiKey.trim();
-                        if (!activeKey) {
-                            // If no key provided and no internal keyword match, return friendly guide with internal fallback
-                            setTimeout(() => {
-                                let fallbackMsg = "Pertanyaan Anda telah kami terima.<br><br>";
-                                if (internalMatch) {
-                                    fallbackMsg += internalMatch.response;
-                                } else {
-                                    fallbackMsg += "<strong>Jawaban Konsep Syarah:</strong><br>Silakan ajukan pertanyaan seputar Isim Maqshur, Mamdud, Ta'nits, Tatsniyah, Jamak, atau Kaidah Itba'.<br><br><em>Tips: Anda dapat memasukkan Gemini API Key gratis melalui tombol 'Set API Key' di atas untuk bertanya topik apapun secara bebas!</em>";
-                                }
-                                this.aiHistory.push({
-                                    role: 'model',
-                                    text: fallbackMsg
-                                });
-                                this.aiLoading = false;
-                                this.$nextTick(() => this.scrollToChatBottom());
-                            }, 500);
-                            return;
-                        }
-
-                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${activeKey}`;
+                        const systemPrompt = "Anda adalah Pakar Utama Ilmu Nahwu & Sharaf Abad Pertengahan Islam, spesialis membedah Syarah Awdhahul Masalik karya Ibnu Hisyam dan Matan Alfiyyah Ibnu Malik (khususnya Bab Ta'nits, 12 Wazan Maqshurah, 17 Wazan Mamdud, Tatsniyah Isim Maqshur & Mamdud, Jamak Isim Maqshur, Kaidah Itba' Jamak Mu'annats Salim, dan Dharurah Syi'ir). Jawablah pertanyaan pengguna secara ilmiah, mendalam, runtut, santun, dan komunikatif dalam Bahasa Indonesia. Sertakan tulisan Arab berharakat, kutipan bait Alfiyyah, analisis I'rab kata demi kata, atau dalil Al-Qur'an/Syi'ir jika relevan.";
 
                         const contentsPayload = this.aiHistory.map(item => ({
                             role: item.role === 'user' ? 'user' : 'model',
@@ -808,13 +1235,31 @@
                             systemInstruction: { parts: [{ text: systemPrompt }] }
                         };
 
-                        let response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
+                        // Exponential backoff fetch
+                        let response = null;
+                        let delay = 1000;
+                        for (let attempt = 0; attempt < 5; attempt++) {
+                            try {
+                                const res = await fetch(apiUrl, {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify(payload)
+                                });
+                                if (res.status === 429 || res.status >= 500) {
+                                    await new Promise(r => setTimeout(r, delay));
+                                    delay *= 2;
+                                    continue;
+                                }
+                                response = res;
+                                break;
+                            } catch (err) {
+                                if (attempt === 4) throw err;
+                                await new Promise(r => setTimeout(r, delay));
+                                delay *= 2;
+                            }
+                        }
 
-                        if (!response.ok) throw new Error("Gagal merespons dari server.");
+                        if (!response || !response.ok) throw new Error("Gagal merespons dari server.");
 
                         const result = await response.json();
                         const candidate = result.candidates?.[0];
@@ -838,8 +1283,16 @@
                         }
 
                     } catch (e) {
-                        // Fallback on error to internal knowledge if available
-                        let errorResponse = internalMatch ? internalMatch.response : "Mohon maaf, koneksi ke server AI terganggu. Pastikan API Key Anda sudah benar atau tanyakan istilah dasar Nahwu/Sharaf.";
+                        // Fallback response using internal knowledge if match found
+                        const lowerQ = q.toLowerCase();
+                        const internalMatch = this.internalKnowledge.find(item => 
+                            item.keywords.some(kw => lowerQ.includes(kw))
+                        );
+
+                        let errorResponse = internalMatch 
+                            ? internalMatch.response + `<br><br><em class="text-[11px] text-amber-600/70">(Catatan: Dijawab menggunakan Pustaka Syarah Internal)</em>`
+                            : "Mohon maaf, koneksi ke jaringan AI terganggu. Silakan periksa koneksi internet Anda dan coba lagi.";
+                        
                         this.aiHistory.push({
                             role: 'model',
                             text: errorResponse
