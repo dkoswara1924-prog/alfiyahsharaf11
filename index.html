@@ -1409,11 +1409,11 @@ Prinsip Utama Layanan Anda:
 
                         let errorResponse = "";
                         if (internalMatch) {
-                            errorResponse = internalMatch.response + `\n\n*(Catatan: Dijawab menggunakan Pustaka Internal)*`;
+                            errorResponse = internalMatch.response;
                         } else if (!this.userApiKey || (e.message && (e.message.includes("unregistered") || e.message.includes("API key") || e.message.includes("400") || e.message.includes("403") || e.message.includes("identity")))) {
                             errorResponse = `**Koneksi Gemini 2.5 Flash Memerlukan API Key:**\n\n` +
                             `Untuk mengajukan pertanyaan dinamis di luar materi internal, Anda dapat memasukkan **Gemini API Key** gratis dari Google AI Studio dengan mengeklik tombol **Set API Key (Opsional)** di sudut kanan atas tab Tanya AI.\n\n` +
-                            `*Atau, Anda dapat mengeklik contoh-contoh pertanyaan di atas yang sudah siap dijawab secara instan oleh pustaka Syarah internal!*`;
+                            `*Atau, Anda dapat mengeklik contoh-contoh pertanyaan di atas yang sudah siap dijawab secara instan!*`;
                         } else {
                             errorResponse = `Mohon maaf, terjadi gangguan koneksi ke Gemini Flash API: *${e.message || "Koneksi terputus"}*. Silakan periksa koneksi Anda dan coba beberapa saat lagi.`;
                         }
