@@ -425,17 +425,23 @@
                 <div class="bg-emerald-900 text-parchment-100 p-6 rounded-2xl border border-amber-500/40 shadow-lg space-y-2">
                     <div class="flex items-center justify-between flex-wrap gap-2">
                         <span class="inline-block px-3 py-1 bg-amber-600/30 border border-amber-500/50 text-amber-300 text-xs font-semibold rounded-full">
-                            <i class="fa-solid fa-brain mr-1.5"></i> Asisten Pakar Nahwu & Sharaf Interaktif (Gemini AI)
+                            <i class="fa-solid fa-brain mr-1.5"></i> Gemini 2.5 Flash API (Terhubung Luas & Dinamis)
                         </span>
-                        <button v-if="aiHistory.length" @click="clearAiHistory" class="text-xs text-amber-300/70 hover:text-amber-300 underline flex items-center">
-                            <i class="fa-solid fa-trash-can mr-1"></i> Bersihkan Obrolan
-                        </button>
+                        
+                        <div class="flex items-center space-x-2">
+                            <button @click="showApiKeyModal = true" class="px-3 py-1 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 rounded-lg text-xs font-medium transition flex items-center">
+                                <i class="fa-solid fa-key mr-1.5 text-amber-400"></i> {{ userApiKey ? 'API Key Terpasang' : 'Set API Key (Opsional)' }}
+                            </button>
+                            <button v-if="aiHistory.length" @click="clearAiHistory" class="text-xs text-amber-300/70 hover:text-amber-300 underline flex items-center">
+                                <i class="fa-solid fa-trash-can mr-1"></i> Bersihkan
+                            </button>
+                        </div>
                     </div>
                     <h2 class="text-2xl sm:text-3xl font-bold font-serif text-amber-300 flex items-center">
-                        <i class="fa-solid fa-scroll mr-3 text-amber-400"></i> مًسَاعِدُ النَّحْوِ (Tanya AI Sharaf Dinamis)
+                        <i class="fa-solid fa-scroll mr-3 text-amber-400"></i> مًسَاعِدُ النَّحْوِ (Tanya AI Bahasa Arab & Nahwu Dinamis)
                     </h2>
                     <p class="text-xs sm:text-sm text-parchment-200">
-                        Ajukan pertanyaan dinamis seputar Matan Alfiyyah Ibnu Malik, Syarah Awdhahul Masalik (Ibnu Hisyam), analisis I'rab, wazan, atau contoh dalil Al-Qur'an & Syi'ir.
+                        Ajukan pertanyaan apa saja tentang Bahasa Arab, Nahwu, Sharaf, Alfiyyah Ibnu Malik, Syarah Ibnu Hisyam, Qaidaty, Al-Qur'an, Hadits, atau analisis I'rab dalam gaya bahasa apa pun.
                     </p>
                 </div>
 
@@ -459,11 +465,11 @@
                     
                     <div v-if="!aiHistory.length" class="my-auto text-center py-12 space-y-3 opacity-80">
                         <div class="w-16 h-16 mx-auto rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500 text-3xl">
-                            <i class="fa-solid fa-book-quran"></i>
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
                         </div>
-                        <h3 class="text-base font-bold font-serif text-amber-700 dark:text-amber-300">Diskusi Tanya Jawab Dinamis</h3>
+                        <h3 class="text-base font-bold font-serif text-amber-700 dark:text-amber-300">Diskusi Tanya Jawab Dinamis (Gemini 2.5 Flash)</h3>
                         <p class="text-xs text-gray-500 dark:text-parchment-300 max-w-md mx-auto">
-                            Tanyakan apa saja seputar Bab Ta'nits, Wazan Maqshurah & Mamdud, Tatsniyah, Jamak, Kaidah Itba', atau analisis I'rab dalam Alfiyyah Ibnu Malik.
+                            Tanyakan apa saja seputar Nahwu, Sharaf, I'rab, Qaidaty, Alfiyyah, Al-Qur'an, atau keislaman dengan gaya bahasa santai maupun formal.
                         </p>
                     </div>
 
@@ -471,7 +477,7 @@
                         :class="msg.role === 'user' ? 'self-end bg-emerald-800 text-amber-100 max-w-[85%] rounded-2xl rounded-tr-none p-4 shadow-md' : 'self-start bg-parchment-50 dark:bg-emerald-950 border border-amber-500/30 text-parchment-900 dark:text-parchment-50 max-w-[90%] rounded-2xl rounded-tl-none p-5 shadow-md space-y-3'">
                         
                         <div class="flex items-center justify-between border-b border-amber-500/20 pb-1 text-[11px] font-bold text-amber-400">
-                            <span><i :class="msg.role === 'user' ? 'fa-solid fa-user-pen mr-1' : 'fa-solid fa-feather mr-1'"></i> {{ msg.role === 'user' ? 'Penuntut Ilmu' : 'Syarah AI Ibnu Hisyam' }}</span>
+                            <span><i :class="msg.role === 'user' ? 'fa-solid fa-user-pen mr-1' : 'fa-solid fa-brain mr-1'"></i> {{ msg.role === 'user' ? 'Penuntut Ilmu' : 'Gemini 2.5 Flash AI' }}</span>
                         </div>
 
                         <!-- Render Message Content -->
@@ -479,7 +485,7 @@
 
                         <!-- Sources / Citations Grounding -->
                         <div v-if="msg.sources && msg.sources.length" class="pt-2 border-t border-amber-500/20 space-y-1">
-                            <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400"><i class="fa-solid fa-link mr-1"></i>Rujukan Referensi Web:</span>
+                            <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400"><i class="fa-solid fa-link mr-1"></i>Rujukan Referensi Web Real-Time:</span>
                             <div class="flex flex-wrap gap-1.5">
                                 <a v-for="(src, sIdx) in msg.sources" :key="sIdx" :href="src.uri" target="_blank" rel="noopener" class="text-[10px] bg-amber-500/10 hover:bg-amber-500/30 text-amber-700 dark:text-amber-300 px-2 py-0.5 rounded border border-amber-500/20 truncate max-w-[200px]">
                                     <i class="fa-solid fa-globe mr-1"></i>{{ src.title || src.uri }}
@@ -492,7 +498,7 @@
                     <!-- AI Loading Pulse -->
                     <div v-if="aiLoading" class="self-start bg-parchment-50 dark:bg-emerald-950 border border-amber-500/30 p-4 rounded-2xl rounded-tl-none flex items-center space-x-3 text-amber-400 animate-pulse">
                         <i class="fa-solid fa-circle-notch fa-spin text-lg"></i>
-                        <span class="text-xs font-serif font-bold">Menyusun jawaban dinamis berdasarkan Syarah Awdhahul Masalik...</span>
+                        <span class="text-xs font-serif font-bold">Gemini 2.5 Flash sedang memproses & menyusun jawaban dinamis...</span>
                     </div>
 
                 </div>
@@ -502,7 +508,7 @@
                     <div class="relative flex-1">
                         <textarea v-model="aiQuery" 
                             @keydown.enter.exact.prevent="submitAiQuestion"
-                            placeholder="Ketik pertanyaan dinamis Nahwu/Sharaf Anda di sini (Tekan Enter untuk mengirim)..." 
+                            placeholder="Ketik pertanyaan dinamis Anda di sini (misal: 'jelaskan i'rab fi'il mudhari', 'bebas tanya apa saja')..." 
                             rows="2"
                             :disabled="aiLoading"
                             class="w-full p-3.5 pr-10 bg-white dark:bg-emerald-900 border-2 border-amber-600/50 rounded-xl text-xs sm:text-sm text-parchment-900 dark:text-parchment-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"></textarea>
@@ -518,6 +524,29 @@
             </section>
 
         </main>
+
+        <!-- API KEY MODAL (Opsional untuk Deployment) -->
+        <div v-if="showApiKeyModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div class="bg-white dark:bg-emerald-900 border-2 border-amber-600/50 rounded-2xl p-6 max-w-md w-full shadow-2xl space-y-4">
+                <div class="flex items-center justify-between border-b border-amber-500/20 pb-3">
+                    <h3 class="font-serif font-bold text-lg text-amber-800 dark:text-amber-300 flex items-center">
+                        <i class="fa-solid fa-key mr-2 text-amber-500"></i> Pengaturan API Key Gemini
+                    </h3>
+                    <button @click="showApiKeyModal = false" class="text-gray-400 hover:text-amber-400"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+                <p class="text-xs text-gray-600 dark:text-parchment-200 leading-relaxed">
+                    Di lingkungan Canvas, API Key sudah terhubung secara otomatis. Jika diunggah ke <strong>GitHub Pages</strong>, Anda dapat memasukkan Gemini API Key gratis (dari Google AI Studio) agar fitur Tanya AI dapat menjawab seluruh pertanyaan dinamis tanpa batas.
+                </p>
+                <div class="space-y-1">
+                    <label class="text-[11px] font-bold text-amber-700 dark:text-amber-400 block">Gemini API Key (AI Studio):</label>
+                    <input v-model="userApiKeyInput" type="password" placeholder="AIzaSy..." class="w-full p-3 bg-parchment-50 dark:bg-emerald-950 border border-amber-600/40 rounded-xl text-xs text-parchment-900 dark:text-parchment-100 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono" />
+                </div>
+                <div class="flex justify-end space-x-2 pt-2">
+                    <button @click="clearUserApiKey" class="px-3 py-2 bg-gray-200 dark:bg-emerald-950 text-gray-700 dark:text-parchment-200 rounded-xl text-xs">Hapus</button>
+                    <button @click="saveUserApiKey" class="px-4 py-2 bg-amber-600 hover:bg-amber-500 text-emerald-950 font-bold rounded-xl text-xs">Simpan Key</button>
+                </div>
+            </div>
+        </div>
 
         <!-- FOOTER -->
         <footer class="mt-auto bg-emerald-950 text-amber-200/80 border-t-2 border-amber-600/40 py-6 text-center text-xs space-y-2">
@@ -540,6 +569,11 @@
                     currentModuleIndex: 0,
                     userScore: 0,
 
+                    // API Key Settings State
+                    userApiKey: localStorage.getItem('gemini_api_key') || '',
+                    userApiKeyInput: localStorage.getItem('gemini_api_key') || '',
+                    showApiKeyModal: false,
+
                     // AI State
                     aiQuery: '',
                     aiLoading: false,
@@ -547,15 +581,15 @@
                     suggestedPrompts: [
                         "Bagaimana analisis I'rab bait 'عَلَامَةُ التَّأْنِيثِ تَاءٌ أَوْ أَلِفْ'?",
                         "Jelaskan perbedaan mendasar antara Ulama Basrah dan Kufah tentang Madd al-Maqshur!",
-                        "Mengapa kata 'صَحْرَاءُ' dinamakan Alif Ta'nits Mamdudah?",
+                        "Apa hubungan antara metode Qaidaty dengan Syarah Ibnu Hisyam dalam membaca kitab gundul?",
                         "Buatkan contoh analisis I'rab kata Isim Maqshur dalam 3 posisi I'rab (Rafa', Nashab, Jar)!",
-                        "Bagaimana cara men-tatsniyahkan kata 'عِلْبَاءٌ' menurut para ahli Nahwu?"
+                        "Bagaimana kaidah I'rab Fi'il Mudhari' Mu'tal Akhir di dalam Al-Qur'an?"
                     ],
 
                     // INTERNAL KNOWLEDGE BASE FOR OFFLINE FALLBACK
                     internalKnowledge: [
                         {
-                            keywords: ['mau nanya', 'nanya', 'permisi', 'halo', 'hai', 'assalamualaikum', 'ping', 'bertanya'],
+                            keywords: ['mau nanya', 'nanya', 'permisi', 'halo', 'hai', 'assalamualaikum', 'bertanya'],
                             response: `Na'am, ahlan wa sahlan! Silakan tanyakan apa saja seputar ilmu Nahwu dan Sharaf (seperti Isim Maqshur, Mamdud, Bab Ta'nits, Tatsniyah, Jamak, Kaidah Itba', atau I'rab bait Alfiyyah). Saya siap membantu mendiskusikannya berdasarkan Syarah Awdhahul Masalik karya Ibnu Hisyam.`
                         },
                         {
@@ -585,36 +619,6 @@
                             Ibnu Hisyam mematahkan takwil Ulama Basrah dan menyifatinya sebagai takwil yang sangat dipaksakan (*Ta'assuf*). Beliau cenderung mendukung kelonggaran Madzhab Kufah dalam konteks *Dharurah Syi'ir*.`
                         },
                         {
-                            keywords: ['sahraa', 'sahra', 'صَحْرَاءُ', 'صجراء', 'dinamakan alif ta\'nits mamdudah', 'kenapa sahraa'],
-                            response: `<strong>Mengapa Kata 'صَحْرَاءُ' Dinamakan Alif Ta'nits Mamdudah?</strong><br><br>
-                            • <strong>Struktur Kata:</strong> Kata <em>صَحْرَاءُ</em> ber-wazan <strong>فَعْلَاءُ</strong> (Fa'laa').<br>
-                            • <strong>Analisis Fonetik Sharaf:</strong> Asal kata ini memiliki dua huruf Alif tambahan (<em>Alif Za'idah</em>) setelah huruf Ro' dasar. Untuk menghindari bertemunya dua Alif sukun (*Iltiqa' As-Sakinain*), Alif kedua diubah menjadi <strong>Hamzah (ء)</strong>.<br>
-                            • <strong>Fungsi Ta'nits:</strong> Alif-Hamzah ini murni berfungsi sebagai penanda feminin (<em>Alif Ta'nits Mamdudah</em>), bukan huruf bawaan asli akar kata (seperti *قَرَأَ -> قَرَّاءٌ*).`
-                        },
-                        {
-                            keywords: ['posisi i\'rab', 'posisi irab', '3 posisi', 'tiga posisi', 'contoh analisis i\'rab kata isim maqshur', 'rafa', 'nashab', 'jar'],
-                            response: `<strong>Contoh Analisis I'rab Isim Maqshur dalam 3 Posisi (Rafa', Nashab, Jar):</strong><br><br>
-                            Isim Maqshur (contoh: <em>الفَتَى</em> - Al-Fata) seluruh tanda I'rab-nya tersembunyi (*Muqaddarah*) karena udzur artikulasi (*At-Ta'adzdzur*):<br><br>
-                            <strong>1. Posisi Rafa' (Sebagai Fa'il):</strong><br>
-                            • Kalimat: <span class="arabic-text text-base">جَاءَ الْفَتَى</span> (Pemuda itu telah datang).<br>
-                            • I'rab: <strong>الْفَتَى</strong> = <em>Fa'il</em> marfu', tanda rafa'-nya adalah <strong>Dhommah Muqaddarah</strong> di atas huruf Alif, terhalang oleh *At-Ta'adzdzur*.<br><br>
-                            <strong>2. Posisi Nashab (Sebagai Maf'ul Bih):</strong><br>
-                            • Kalimat: <span class="arabic-text text-base">رَأَيْتُ الْفَتَى</span> (Saya melihat pemuda itu).<br>
-                            • I'rab: <strong>الْفَتَى</strong> = <em>Maf'ul Bih</em> manshub, tanda nashab-nya adalah <strong>Fathah Muqaddarah</strong> di atas huruf Alif, terhalang oleh *At-Ta'adzdzur*.<br><br>
-                            <strong>3. Posisi Jar (Majrur Harf Jar):</strong><br>
-                            • Kalimat: <span class="arabic-text text-base">مَرَرْتُ بِالْفَتَى</span> (Saya melewati pemuda itu).<br>
-                            • I'rab: <strong>الْفَتَى</strong> = <em>Isim Majrur</em> dengan huruf Ba', tanda jar-nya adalah <strong>Kasrah Muqaddarah</strong> di atas huruf Alif, terhalang oleh *At-Ta'adzdzur*.`
-                        },
-                        {
-                            keywords: ['ilbaa', 'ilba', 'علباء', 'عِلْبَاءٌ', 'tatsniyahkan kata', 'tatsniyah ilbaa'],
-                            response: `<strong>Tata Cara Tatsniyah Kata 'عِلْبَاءٌ' menurut Ahli Nahwu:</strong><br><br>
-                            • <strong>Tipe Hamzah:</strong> Hamzah pada kata <em>عِلْبَاءٌ</em> (urat leher) adalah <strong>Hamzah Ilhaq</strong> (penyeimbang wazan agar setara dengan wazan *قِرْطَاسٌ*).<br>
-                            • <strong>Hukum Tatsniyah (Syarah Awdhahul Masalik):</strong> Boleh dibaca dalam 2 cara:<br>
-                            1. <strong>Opsi Unggul (Rajih / Tashghih):</strong> Mempertahankan Hamzah -> <span class="arabic-text text-base font-bold">عِلْبَاءَانِ</span> (Ilbaa'aani).<br>
-                            2. <strong>Opsi Sekunder (Marjuh / I'lal):</strong> Mengubah Hamzah menjadi Wawu -> <span class="arabic-text text-base font-bold">عِلْبَاوَانِ</span> (Ilbaawaani).<br><br>
-                            <em>Catatan Akademis:</em> Imam Sibawaih mencatat bahwa lisan Arab kuno justru lebih sering melafalkan bentuk Wawu (*Ilbaawaani*) pada kata ini dibanding kata *Kisaa'*.`
-                        },
-                        {
                             keywords: ['maqshur', 'maqsur', 'makshur', 'apa itu maqshur', 'pengertian maqshur'],
                             response: `<strong>Isim Maqshur (الْمَقْصُورُ)</strong> adalah setiap Isim Mu'rab yang diakhiri oleh huruf <strong>Alif Lazimah (Alif tetap)</strong> dan huruf sebelumnya berharakat Fathah.<br><br>
                             <strong>Contoh Utama:</strong><br>
@@ -637,30 +641,6 @@
                             2. <strong>Hamzah Ta'nits:</strong> Penanda feminin (contoh: <em>صَحْرَاءُ</em>).<br>
                             3. <strong>Hamzah Ubahan (Badal min Ashl):</strong> Berasal dari Wawu/Ya (contoh: <em>كِسَاءٌ</em> dari <em>Kisaaw</em>).<br>
                             4. <strong>Hamzah Ilhaq:</strong> Penyeimbang wazan (contoh: <em>عِلْبَاءٌ</em>).`
-                        },
-                        {
-                            keywords: ['ta\'nits', 'tanits', 'muannats', 'gender', 'perempuan', 'kenapa muannats'],
-                            response: `<strong>Bab Ta'nits (التَّأْنِيثُ) dalam Bahasa Arab:</strong><br><br>
-                            <strong>Filosofi Dasar Ibnu Hisyam (Awdhahul Masalik):</strong><br>
-                            Hukum asal (fondasi/akar) sebuah kata adalah <strong>Mudzakkar (maskulin)</strong> karena bersifat ringan (<em>Khafif</em>) dan tidak butuh penanda. Sedangkan <strong>Muannats (feminin)</strong> berstatus sebagai cabang (<em>Far'</em>), sehingga wajib menyandang <strong>tanda pembeda (العلامة)</strong>.<br><br>
-                            <strong>Tanda-Tanda Ta'nits:</strong><br>
-                            1. <strong>Ta' Marbuthah (Berharakat):</strong> Khusus masuk pada Isim (contoh: <em>قَائِمَةٌ</em>).<br>
-                            2. <strong>Ta' Maftuhah Sukun:</strong> Khusus masuk pada Fi'il Madhi (contoh: <em>قَامَتْ</em>).<br>
-                            3. <strong>Alif Maqshurah:</strong> Contoh <em>حُبْلَى</em>.<br>
-                            4. <strong>Alif Mamdudah:</strong> Contoh <em>صَحْرَاءُ</em>.<br>
-                            5. <strong>Ta' Muqaddarah (Tersembunyi):</strong> Contoh <em>كَتِفٌ</em> (bahu) & <em>عَيْنٌ</em> (mata), terbukti dari bentuk Tashghir (<em>كُتَيْفَةٌ</em> & <em>عُيَيْنَةٌ</em>).`
-                        },
-                        {
-                            keywords: ['itba', 'itba\'', 'kaidah itba', 'kebiasaan itba'],
-                            response: `<strong>Kaidah Itba' (إِتْبَاعُ عَيْنِ الجَمْعِ):</strong><br><br>
-                            Itba' adalah penyelarasan harakat huruf 'Ain (huruf tengah) mengikuti harakat Fa' (huruf pertama) pada pembentukan Jamak Mu'annats Salim untuk isim 3 huruf (Tsulatsi) yang huruf tengahnya sukun.<br><br>
-                            <strong>6 Syarat Mutlak Penerapan Itba':</strong><br>
-                            1. Berupa <strong>Isim murni</strong> (bukan sifat/adjektiva).<br>
-                            2. Berukuran <strong>Tsulatsi</strong> (3 huruf dasar).<br>
-                            3. <strong>Salim al-'Ain</strong> (huruf tengah bukan Wawu/Ya').<br>
-                            4. <strong>Sakin al-'Ain</strong> (huruf tengah bersukun pada bentuk mufrad).<br>
-                            5. Berstatus <strong>Mu'annats</strong> (feminin).<br>
-                            6. Bebas dari Tsiqal (keberatan artikulasi).`
                         }
                     ],
 
@@ -1269,6 +1249,19 @@
                     return 'bg-gray-100 dark:bg-emerald-950/40 text-gray-400 border-transparent opacity-60';
                 },
 
+                saveUserApiKey() {
+                    this.userApiKey = this.userApiKeyInput.trim();
+                    localStorage.setItem('gemini_api_key', this.userApiKey);
+                    this.showApiKeyModal = false;
+                },
+
+                clearUserApiKey() {
+                    this.userApiKey = '';
+                    this.userApiKeyInput = '';
+                    localStorage.removeItem('gemini_api_key');
+                    this.showApiKeyModal = false;
+                },
+
                 async submitAiQuestion() {
                     const q = this.aiQuery.trim();
                     if (!q || this.aiLoading) return;
@@ -1279,10 +1272,16 @@
                     this.$nextTick(() => this.scrollToChatBottom());
 
                     try {
-                        const apiKey = "";
+                        const apiKey = this.userApiKey || "";
                         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
 
-                        const systemPrompt = "Anda adalah Pakar Utama Ilmu Nahwu & Sharaf Abad Pertengahan Islam, spesialis membedah Syarah Awdhahul Masalik karya Ibnu Hisyam dan Matan Alfiyyah Ibnu Malik. Jawablah pertanyaan pengguna secara ilmiah, mendalam, runtut, santun, dan komunikatif dalam Bahasa Indonesia. Sertakan tulisan Arab berharakat, kutipan bait Alfiyyah, analisis I'rab kata demi kata, atau dalil Al-Qur'an/Syi'ir jika relevan.";
+                        const systemPrompt = `Anda adalah Pakar Utama Ilmu Nahwu, Sharaf, dan Bahasa Arab Klasik maupun Modern (Gemini 2.5 Flash API). Anda menguasai Alfiyyah Ibnu Malik, Syarah Awdhahul Masalik karya Ibnu Hisyam, Qaidaty, Al-Qur'an, Hadits, serta seluruh khazanah tata bahasa Arab dan keislaman.
+
+Prinsip Utama Layanan Anda:
+1. TERBUKA & DINAMIS: Anda TIDAK TERBATAS hanya pada materi ringkasan di aplikasi ini. Anda dapat menjawab SELURUH pertanyaan mengenai Bahasa Arab, Nahwu, Sharaf, Balaghah, I'rab, Qira'at, Al-Qur'an, Hadits, maupun topik umum lainnya secara ilmiah, luas, dan mendalam.
+2. ADAPTIF TERHADAP GAYA BAHASA: Terima dan pahami pertanyaan pengguna dengan gaya bahasa apa pun (santai, gaul, formal, campuran, singkat, atau panjang). Jawablah dengan bahasa Indonesia yang ramah, santun, komunikatif, dan terstruktur.
+3. KAYA AKAN DALIL & RUJUKAN: Sertakan tulisan Arab berharakat, bait Alfiyyah, ayat Al-Qur'an, Hadits, atau syahid syi'ir Arab klasik beserta analisis I'rab atau morfologinya jika relevan.
+4. PENCARIAN WEB REAL-TIME: Manfaatkan pengetahuan luas dan pencarian web untuk memberikan jawaban paling akurat dan mutakhir.`;
 
                         const contentsPayload = this.aiHistory.map(item => ({
                             role: item.role === 'user' ? 'user' : 'model',
@@ -1297,7 +1296,8 @@
 
                         // Exponential backoff fetch
                         let response = null;
-                        let delay = 1000;
+                        const delays = [1000, 2000, 4000, 8000, 16000];
+
                         for (let attempt = 0; attempt < 5; attempt++) {
                             try {
                                 const res = await fetch(apiUrl, {
@@ -1305,21 +1305,26 @@
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify(payload)
                                 });
+                                
                                 if (res.status === 429 || res.status >= 500) {
-                                    await new Promise(r => setTimeout(r, delay));
-                                    delay *= 2;
+                                    await new Promise(r => setTimeout(r, delays[attempt]));
                                     continue;
                                 }
+
+                                if (!res.ok) {
+                                    const errData = await res.json().catch(() => ({}));
+                                    throw new Error(errData.error?.message || `HTTP Error ${res.status}`);
+                                }
+
                                 response = res;
                                 break;
                             } catch (err) {
                                 if (attempt === 4) throw err;
-                                await new Promise(r => setTimeout(r, delay));
-                                delay *= 2;
+                                await new Promise(r => setTimeout(r, delays[attempt]));
                             }
                         }
 
-                        if (!response || !response.ok) throw new Error("Gagal merespons dari server.");
+                        if (!response) throw new Error("Gagal terhubung ke Gemini Flash API.");
 
                         const result = await response.json();
                         const candidate = result.candidates?.[0];
@@ -1339,11 +1344,10 @@
                                 sources: sources
                             });
                         } else {
-                            throw new Error("Respon kosong");
+                            throw new Error("Respon AI tidak tersedia.");
                         }
 
                     } catch (e) {
-                        // Smart matching function with word boundary protection
                         const lowerQ = q.toLowerCase();
                         let internalMatch = null;
 
@@ -1351,7 +1355,6 @@
                             const isMatch = item.keywords.some(kw => {
                                 const kwLower = kw.toLowerCase();
                                 if (kwLower.length <= 3) {
-                                    // Use word boundary for short keywords to prevent false sub-string matches
                                     const regex = new RegExp(`\\b${kwLower}\\b`, 'i');
                                     return regex.test(lowerQ);
                                 }
@@ -1364,9 +1367,16 @@
                             }
                         }
 
-                        let errorResponse = internalMatch 
-                            ? internalMatch.response
-                            : `Tentu! Silakan tanyakan hal spesifik seputar <strong>Isim Maqshur, Isim Mamdud, Bab Ta'nits, Tatsniyah, Jamak, Kaidah Itba', atau I'rab bait Alfiyyah Ibnu Malik</strong>. Saya siap menjelaskan secara rinci berdasarkan Syarah Awdhahul Masalik karya Ibnu Hisyam.`;
+                        let errorResponse = "";
+                        if (internalMatch) {
+                            errorResponse = internalMatch.response + `<br><br><em class="text-[11px] text-amber-600/80">(Catatan: Dijawab menggunakan Pustaka Internal)</em>`;
+                        } else if (e.message && (e.message.includes("API key") || e.message.includes("400") || e.message.includes("403"))) {
+                            errorResponse = `<strong>Koneksi Gemini 2.5 Flash Perlu API Key:</strong><br>
+                            Saat diunggah ke GitHub Pages, silakan masukkan <strong>Gemini API Key</strong> gratis dari Google AI Studio dengan mengeklik tombol <strong><i class="fa-solid fa-key text-amber-500"></i> Set API Key (Opsional)</strong> di pojok kanan atas tab Tanya AI.<br><br>
+                            <em>Di lingkungan Canvas/Preview, AI sudah terhubung secara otomatis ke Gemini Flash API.</em>`;
+                        } else {
+                            errorResponse = `Mohon maaf, terjadi gangguan koneksi ke Gemini Flash API: <em>${e.message || "Koneksi terputus"}</em>. Silakan periksa koneksi Anda dan coba beberapa saat lagi.`;
+                        }
                         
                         this.aiHistory.push({
                             role: 'model',
@@ -1398,15 +1408,31 @@
                     if (!text) return '';
                     let html = text;
 
+                    // Escape raw HTML tags for security
+                    html = html.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+                    // Code blocks ```code```
+                    html = html.replace(/```([\s\S]*?)```/g, '<pre class="bg-emerald-950 text-amber-200 p-3 rounded-xl text-xs font-mono my-2 overflow-x-auto"><code>$1</code></pre>');
+                    
+                    // Inline code `code`
+                    html = html.replace(/`([^`]+)`/g, '<code class="bg-amber-500/20 text-amber-800 dark:text-amber-300 px-1.5 py-0.5 rounded font-mono text-xs">$1</code>');
+
                     // Bold text **bold**
                     html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    
                     // Italic text *italic*
                     html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
 
-                    // Convert line breaks only if HTML breaks do not already exist
-                    if (!html.includes('<br>') && !html.includes('</p>') && !html.includes('</div>')) {
-                        html = html.replace(/\n/g, '<br>');
-                    }
+                    // Headers
+                    html = html.replace(/^### (.*$)/gim, '<h4 class="font-serif font-bold text-amber-700 dark:text-amber-300 text-sm mt-3 mb-1">$1</h4>');
+                    html = html.replace(/^## (.*$)/gim, '<h3 class="font-serif font-bold text-amber-800 dark:text-amber-300 text-base mt-4 mb-2">$1</h3>');
+
+                    // Bullet & Numbered List Items
+                    html = html.replace(/^\s*[-•*]\s+(.*$)/gim, '<li class="ml-4 list-disc">$1</li>');
+                    html = html.replace(/^\s*(\d+)\.\s+(.*$)/gim, '<li class="ml-4 list-decimal">$2</li>');
+
+                    // Newlines to <br>
+                    html = html.replace(/\n/g, '<br>');
 
                     return html;
                 }
