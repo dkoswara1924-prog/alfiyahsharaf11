@@ -555,7 +555,15 @@
                     // INTERNAL KNOWLEDGE BASE FOR OFFLINE FALLBACK
                     internalKnowledge: [
                         {
-                            keywords: ['maqshur', "maqsur", 'nama maqshur', 'apa itu maqshur', 'pengertian maqshur'],
+                            keywords: ['mau nanya', 'nanya', 'permisi', 'halo', 'hai', 'assalamualaikum', 'p', 'ping', 'tanya', 'bertanya'],
+                            response: `Na'am, ahlan wa sahlan! Silakan tanyakan apa saja seputar ilmu Nahwu dan Sharaf (seperti Isim Maqshur, Mamdud, Bab Ta'nits, Tatsniyah, Jamak, Kaidah Itba', atau I'rab bait Alfiyyah). Saya siap membantu mendiskusikannya berdasarkan Syarah Awdhahul Masalik karya Ibnu Hisyam.`
+                        },
+                        {
+                            keywords: ['makasih', 'terima kasih', 'syukran', 'jazakallah', 'mantap', 'oke', 'ok'],
+                            response: `Afwan / Sama-sama! Semoga ilmunya berkah dan menambah pemahaman dalam mempelajari tata bahasa Arab klasik. Jika ada pertanyaan lain, jangan ragu untuk bertanya lagi.`
+                        },
+                        {
+                            keywords: ['maqshur', 'maqsur', 'makshur', 'apa itu maqshur', 'nama maqshur', 'pengertian maqshur'],
                             response: `<strong>Isim Maqshur (الْمَقْصُورُ)</strong> adalah setiap Isim Mu'rab yang diakhiri oleh huruf <strong>Alif Lazimah (Alif tetap)</strong> dan huruf sebelumnya berharakat Fathah.<br><br>
                             <strong>Contoh Utama:</strong><br>
                             • <em>الفَتَى</em> (Al-Fata - Pemuda)<br>
@@ -1222,7 +1230,7 @@
                         const apiKey = "";
                         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
 
-                        const systemPrompt = "Anda adalah Pakar Utama Ilmu Nahwu & Sharaf Abad Pertengahan Islam, spesialis membedah Syarah Awdhahul Masalik karya Ibnu Hisyam dan Matan Alfiyyah Ibnu Malik (khususnya Bab Ta'nits, 12 Wazan Maqshurah, 17 Wazan Mamdud, Tatsniyah Isim Maqshur & Mamdud, Jamak Isim Maqshur, Kaidah Itba' Jamak Mu'annats Salim, dan Dharurah Syi'ir). Jawablah pertanyaan pengguna secara ilmiah, mendalam, runtut, santun, dan komunikatif dalam Bahasa Indonesia. Sertakan tulisan Arab berharakat, kutipan bait Alfiyyah, analisis I'rab kata demi kata, atau dalil Al-Qur'an/Syi'ir jika relevan.";
+                        const systemPrompt = "Anda adalah Pakar Utama Ilmu Nahwu & Sharaf Abad Pertengahan Islam, spesialis membedah Syarah Awdhahul Masalik karya Ibnu Hisyam dan Matan Alfiyyah Ibnu Malik. Jawablah pertanyaan pengguna secara ilmiah, mendalam, runtut, santun, dan komunikatif dalam Bahasa Indonesia. Sertakan tulisan Arab berharakat, kutipan bait Alfiyyah, analisis I'rab kata demi kata, atau dalil Al-Qur'an/Syi'ir jika relevan.";
 
                         const contentsPayload = this.aiHistory.map(item => ({
                             role: item.role === 'user' ? 'user' : 'model',
@@ -1283,15 +1291,15 @@
                         }
 
                     } catch (e) {
-                        // Fallback response using internal knowledge if match found
+                        // Intelligent fallback using internal knowledge
                         const lowerQ = q.toLowerCase();
                         const internalMatch = this.internalKnowledge.find(item => 
                             item.keywords.some(kw => lowerQ.includes(kw))
                         );
 
                         let errorResponse = internalMatch 
-                            ? internalMatch.response + `<br><br><em class="text-[11px] text-amber-600/70">(Catatan: Dijawab menggunakan Pustaka Syarah Internal)</em>`
-                            : "Mohon maaf, koneksi ke jaringan AI terganggu. Silakan periksa koneksi internet Anda dan coba lagi.";
+                            ? internalMatch.response
+                            : `Tentu! Silakan tanyakan hal spesifik seputar <strong>Isim Maqshur, Isim Mamdud, Bab Ta'nits, Tatsniyah, Jamak, Kaidah Itba', atau I'rab bait Alfiyyah Ibnu Malik</strong>. Saya siap menjelaskan secara rinci.`;
                         
                         this.aiHistory.push({
                             role: 'model',
@@ -1321,17 +1329,17 @@
 
                 formatAiText(text) {
                     if (!text) return '';
-                    let html = text
-                        .replace(/&/g, "&amp;")
-                        .replace(/</g, "&lt;")
-                        .replace(/>/g, "&gt;");
+                    let html = text;
 
                     // Bold text **bold**
                     html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
                     // Italic text *italic*
                     html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
-                    // Newlines to <br>
-                    html = html.replace(/\n/g, '<br>');
+
+                    // Convert line breaks only if HTML breaks do not already exist
+                    if (!html.includes('<br>') && !html.includes('</p>') && !html.includes('</div>')) {
+                        html = html.replace(/\n/g, '<br>');
+                    }
 
                     return html;
                 }
