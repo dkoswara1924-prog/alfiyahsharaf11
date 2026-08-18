@@ -589,94 +589,103 @@
                     // INTERNAL KNOWLEDGE BASE FOR OFFLINE FALLBACK
                     internalKnowledge: [
                         {
-                            keywords: ['mau nanya', 'nanya', 'permisi', 'halo', 'hai', 'assalamualaikum', 'bertanya'],
+                            category: "topic",
+                            keywords: ['qaidaty', 'qoidaty', 'metode qaidaty', 'hubungan qaidaty', 'kitab gundul'],
+                            response: `**Hubungan Metode Qaidaty & Syarah Ibnu Hisyam (Awdhahul Masalik) dalam Membaca Kitab Gundul:**\n\n` +
+                                `**1. Metode Qaidaty (Jurus & Rumus Cepat):**\n` +
+                                `Qaidaty berfokus pada *Aplikasi Praktis & Kecepatan* melalui rumus-rumus jitu (seperti $N+M = \\text{Idhofah}$, $M+N = \\text{Mubtada'}+\\text{Khabar}$, dll.) untuk mendeteksi struktur kalimat (tarkib) dan harakat akhir secara cepat bagi pembaca pemula.\n\n` +
+                                `**2. Syarah Ibnu Hisyam / Awdhahul Masalik (Landasan Ilmiah Mendalam):**\n` +
+                                `Syarah Ibnu Hisyam menyediakan *Pondasi Teori, Analisis Linguistik (Ta'lil/I'lal), dan Dalil Syahid Syi'ir/Al-Qur'an* yang melandasi setiap rumus tersebut. Ibnu Hisyam mengurai mengapa suatu kaidah berlaku, anomali bahasa (Syadz), serta perbedaan pendapat ulama Basrah dan Kufah.\n\n` +
+                                `**3. Sintesis dalam Membaca Kitab Gundul:**\n` +
+                                `Qaidaty berperan sebagai *peta navigasi cepat* (praktis), sedangkan Syarah Ibnu Hisyam berperan sebagai *kompas keilmuan yang kokoh* (teoritis). Penggabungan keduanya membuat pembaca tidak hanya cepat membaca kitab gundul, tetapi juga paham argumentasi tata bahasanya secara shahih.`
+                        },
+                        {
+                            category: "topic",
+                            keywords: ['i\'rab bait', 'irab bait', 'عَلَامَةُ التَّأْنِيثِ', 'علامة التأنيث', 'analisis i\'rab bait'],
+                            response: `**Analisis I'rab Bait Alfiyyah:**\n` +
+                                `<span class="arabic-text text-lg font-bold text-amber-300">عَلَامَةُ التَّأْنِيثِ تَاءٌ أَوْ أَلِفْ</span>\n\n` +
+                                `• **عَلَامَةُ** : *Mubtada'* (مبتدأ) marfu' dengan tanda Dhommah Zhahirah di akhirnya. Berkedudukan pula sebagai *Mudhaf* (مضاف).\n` +
+                                `• **التَّأْنِيثِ** : *Mudhaf 'Ilaih* (مضاف إليه) majrur dengan tanda Kasrah Zhahirah di akhirnya.\n` +
+                                `• **تَاءٌ** : *Khabar Mubtada'* (خبر المبتدأ) marfu' dengan tanda Dhommah Zhahirah (tanwin).\n` +
+                                `• **أَوْ** : *Harf 'Athaf* (حرف عطف) berfungsi sebagai pilihan/rincian (للتخيير/التقسيم), مبني على السكون.\n` +
+                                `• **أَلِفْ** : *Ma'thuf* (معطوف) di-'athaf-kan kepada kata *تَاءٌ*, berstatus marfu' dengan Dhommah Muqaddarah, disukunkan huruf akhirnya karena menjaga rima waqaf bait syi'ir.`
+                        },
+                        {
+                            category: "topic",
+                            keywords: ['3 posisi', 'posisi i\'rab', 'contoh analisis i\'rab kata isim maqshur', 'rafa nashab jar'],
+                            response: `**Contoh Analisis I'rab Isim Maqshur dalam 3 Posisi I'rab (Rafa', Nashab, Jar):**\n\n` +
+                                `**1. Posisi Rafa' (sebagai Fa'il):**\n` +
+                                `<span class="arabic-text text-base font-bold text-amber-300">جَاءَ الْفَتَى</span> (Al-Fataa telah datang)\n` +
+                                `• *الْفَتَى* : Fa'il marfu' dengan tanda **Dhommah Muqaddarah** di atas Alif karena terhalang udzur artikulasi (*At-Ta'adzdzur*).\n\n` +
+                                `**2. Posisi Nashab (sebagai Maf'ul Bih):**\n` +
+                                `<span class="arabic-text text-base font-bold text-amber-300">رَأَيْتُ الْفَتَى</span> (Saya melihat Al-Fataa)\n` +
+                                `• *الْفَتَى* : Maf'ul Bih manshub dengan tanda **Fathah Muqaddarah** di atas Alif karena *At-Ta'adzdzur*.\n\n` +
+                                `**3. Posisi Jar (sebagai Majrur Harf Jar):**\n` +
+                                `<span class="arabic-text text-base font-bold text-amber-300">مَرَرْتُ بِالْفَتَى</span> (Saya berjalan melewati Al-Fataa)\n` +
+                                `• *الْفَتَى* : Isim majrur dengan tanda **Kasrah Muqaddarah** di atas Alif karena *At-Ta'adzdzur*.`
+                        },
+                        {
+                            category: "topic",
+                            keywords: ['fi\'il mudhari', 'fiil mudhari', 'mu\'tal akhir', 'mutal akhir'],
+                            response: `**Kaidah I'rab Fi'il Mudhari' Mu'tal Akhir di dalam Al-Qur'an:**\n\n` +
+                                `Fi'il Mudhari' Mu'tal Akhir (diakhiri Wawu, Ya', atau Alif) memiliki hukum I'rab khusus:\n\n` +
+                                `1. **Kondisi Rafa' (Terbebas dari Amil):** Ditandai dengan **Dhommah Muqaddarah** di akhir huruf illat.\n` +
+                                `• Contoh Al-Qur'an: <span class="arabic-text">وَاللَّهُ يَدْعُو إِلَى دَارِ السَّلَامِ</span> (Kata *يَدْعُو* marfu' dengan Dhommah Muqaddarah).\n\n` +
+                                `2. **Kondisi Nashab (Didahului Amil Nashib seperti Lan, An):**\n` +
+                                `• Mu'tal Wawu & Ya': Ditandai dengan **Fathah Zhahirah** (tampak jelas) karena ringan diucapkan.\n` +
+                                `• Mu'tal Alif: Ditandai dengan **Fathah Muqaddarah**.\n` +
+                                `• Contoh Al-Qur'an: <span class="arabic-text">لَن نَّدْعُوَ مِن دُونِهِ إِلَٰهًا</span> (Kata *نَّدْعُوَ* manshub dengan Fathah Zhahirah).\n\n` +
+                                `3. **Kondisi Jazm (Didahului Amil Jazim seperti Lam, Laa Nahyi):** Ditandai dengan **Membuang Huruf 'Illat (حَذْفُ حَرْفِ الْعِلَّةِ)**.\n` +
+                                `• Contoh Al-Qur'an: <span class="arabic-text">وَلَا تَمْشِ فِي الْأَرْضِ مَرَحًا</span> (Kata *تَمْشِ* majzum dengan membuang huruf Ya').`
+                        },
+                        {
+                            category: "topic",
+                            keywords: ['basrah', 'kufah', 'madd al-maqshur', 'perbedaan basrah', 'madd al-maqsur'],
+                            response: `**Perbedaan Ulama Basrah vs. Kufah tentang Madd al-Maqshur:**\n\n` +
+                                `**1. Madzhab Kufah (Membolehkan):**\n` +
+                                `Ulama Kufah membolehkan memanjangkan Isim Maqshur menjadi Mamdud dalam puisi (*Madd al-Maqshur*) karena darurat syi'ir. Dalil utama mereka adalah Syahid 537:\n` +
+                                `<span class="arabic-text text-base">فَلَا فَقْرٌ يَدُومُ وَلَا غِنَاءُ</span>\n` +
+                                `Kata *غِنَاءُ* di sini asalnya adalah Isim Maqshur *غِنًى* (kekayaan), lalu dipanjangkan menjadi *غِنَاءُ* demi rima.\n\n` +
+                                `**2. Madzhab Basrah (Melarang Keras):**\n` +
+                                `Ulama Basrah menolak dalil tersebut dan menakwilkan bahwa kata *غِنَاء* pada syair tersebut bukan masdar dari fi'il *غَنِيَ* (yang maqshur), melainkan masdar dari fi'il *غَانَيْتُ* yang wazannya memang bermakna mamdud sejak awal.\n\n` +
+                                `**3. Penilaian Ibnu Hisyam (Awdhahul Masalik):**\n` +
+                                `Ibnu Hisyam mematahkan takwil Ulama Basrah dan menyifatinya sebagai takwil yang sangat dipaksakan (*Ta'assuf*). Beliau cenderung mendukung kelonggaran Madzhab Kufah dalam konteks *Dharurah Syi'ir*.`
+                        },
+                        {
+                            category: "topic",
+                            keywords: ['maqshur', 'maqsur', 'makshur', 'apa itu maqshur', 'pengertian maqshur'],
+                            response: `**Isim Maqshur (الْمَقْصُورُ)** adalah setiap Isim Mu'rab yang diakhiri oleh huruf **Alif Lazimah (Alif tetap)** dan huruf sebelumnya berharakat Fathah.\n\n` +
+                                `**Contoh Utama:**\n` +
+                                `• *الفَتَى* (Al-Fata - Pemuda)\n` +
+                                `• *حُبْلَى* (Hubla - Wanita hamil)\n` +
+                                `• *المُصْطَفَى* (Al-Musthafa - Orang pilihan)\n\n` +
+                                `**Karakteristik Utama (Syarah Awdhahul Masalik):**\n` +
+                                `1. **Tanda I'rab Tersembunyi (Muqaddarah):** Tanda Rafa' (Dhommah), Nashab (Fathah), dan Jar (Kasrah) semuanya disembunyikan pada huruf Alif karena terhalang udzur artikulasi (*At-Ta'adzdzur*).\n` +
+                                `2. **Klasifikasi Qiyasi & Sama'i:** Isim Maqshur ada yang berumus baku sesuai padanan kata sehat (*Nazhiir*) seperti masdar *جَوًى* (Nazhiir: *أَسَفٌ*), dan ada yang murni hafalan dari lisan Arab (Sama'i) seperti *الحِجَا* (akal).`
+                        },
+                        {
+                            category: "topic",
+                            keywords: ['mamdud', 'mamdudah', 'apa itu mamdud', 'pengertian mamdud'],
+                            response: `**Isim Mamdud (الْمَمْدُودُ)** adalah setiap Isim Mu'rab yang diakhiri oleh huruf **Hamzah (ء)** yang didahului oleh **Alif Za'idah (Alif tambahan)**.\n\n` +
+                                `**Contoh Utama:**\n` +
+                                `• *صَحْرَاءُ* (Shahraa' - Padang pasir)\n` +
+                                `• *حَمْرَاءُ* (Hamraa' - Merah feminin)\n` +
+                                `• *قَرَّاءٌ* (Qurraa' - Ahli ibadah/baca Al-Qur'an)\n\n` +
+                                `**Empat Tipe Hamzah Mamdud (Syarah Ibnu Hisyam):**\n` +
+                                `1. **Hamzah Asli:** Bawaan akar kata (contoh: *قَرَّاءٌ* dari *قَرَأَ*).\n` +
+                                `2. **Hamzah Ta'nits:** Penanda feminin (contoh: *صَحْرَاءُ*).\n` +
+                                `3. **Hamzah Ubahan (Badal min Ashl):** Berasal dari Wawu/Ya (contoh: *كِسَاءٌ* dari *Kisaaw*).\n` +
+                                `4. **Hamzah Ilhaq:** Penyeimbang wazan (contoh: *عِلْبَاءٌ*).`
+                        },
+                        {
+                            category: "greeting",
+                            keywords: ['mau nanya', 'mau tanya', 'saya mau tanya', 'tanya', 'nanya', 'permisi', 'halo', 'hai', 'assalamualaikum', 'bertanya', 'mohon tanya', 'bisa tanya'],
                             response: `Na'am, ahlan wa sahlan! Silakan tanyakan apa saja seputar ilmu Nahwu dan Sharaf (seperti Isim Maqshur, Mamdud, Bab Ta'nits, Tatsniyah, Jamak, Kaidah Itba', atau I'rab bait Alfiyyah). Saya siap membantu mendiskusikannya berdasarkan Syarah Awdhahul Masalik karya Ibnu Hisyam.`
                         },
                         {
+                            category: "greeting",
                             keywords: ['makasih', 'terima kasih', 'syukran', 'jazakallah', 'mantap', 'oke', 'ok'],
                             response: `Afwan / Sama-sama! Semoga ilmunya berkah dan menambah pemahaman dalam mempelajari tata bahasa Arab klasik. Jika ada pertanyaan lain, jangan ragu untuk bertanya lagi.`
-                        },
-                        {
-                            keywords: ['qaidaty', 'qoidaty', 'metode qaidaty', 'hubungan qaidaty', 'kitab gundul'],
-                            response: `<strong>Hubungan Metode Qaidaty & Syarah Ibnu Hisyam (Awdhahul Masalik) dalam Membaca Kitab Gundul:</strong><br><br>
-                            <strong>1. Metode Qaidaty (Jurus & Rumus Cepat):</strong><br>
-                            Qaidaty berfokus pada <em>Aplikasi Praktis & Kecepatan</em> melalui rumus-rumus jitu (seperti $N+M = \text{Idhofah}$, $M+N = \text{Mubtada'}+\text{Khabar}$, dll.) untuk mendeteksi struktur kalimat (tarkib) dan harakat akhir secara cepat bagi pembaca pemula.<br><br>
-                            <strong>2. Syarah Ibnu Hisyam / Awdhahul Masalik (Landasan Ilmiah Mendalam):</strong><br>
-                            Syarah Ibnu Hisyam menyediakan <em>Pondasi Teori, Analisis Linguistik (Ta'lil/I'lal), dan Dalil Syahid Syi'ir/Al-Qur'an</em> yang melandasi setiap rumus tersebut. Ibnu Hisyam mengurai mengapa suatu kaidah berlaku, anomali bahasa (Syadz), serta perbedaan pendapat ulama Basrah dan Kufah.<br><br>
-                            <strong>3. Sintesis dalam Membaca Kitab Gundul:</strong><br>
-                            Qaidaty berperan sebagai <em>peta navigasi cepat</em> (praktis), sedangkan Syarah Ibnu Hisyam berperan sebagai <em>kompas keilmuan yang kokoh</em> (teoritis). Penggabungan keduanya membuat pembaca tidak hanya cepat membaca kitab gundul, tetapi juga paham argumentasi tata bahasanya secara shahih.`
-                        },
-                        {
-                            keywords: ['i\'rab bait', 'irab bait', 'عَلَامَةُ التَّأْنِيثِ', 'علامة التأنيث', 'analisis i\'rab bait'],
-                            response: `<strong>Analisis I'rab Bait Alfiyyah:</strong><br>
-                            <span class="arabic-text text-lg font-bold text-amber-300">عَلَامَةُ التَّأْنِيثِ تَاءٌ أَوْ أَلِفْ</span><br><br>
-                            • <strong>عَلَامَةُ</strong> : <em>Mubtada'</em> (مبتدأ) marfu' dengan tanda Dhommah Zhahirah di akhirnya. Berkedudukan pula sebagai <em>Mudhaf</em> (مضاف).<br>
-                            • <strong>التَّأْنِيثِ</strong> : <em>Mudhaf 'Ilaih</em> (مضاف إليه) majrur dengan tanda Kasrah Zhahirah di akhirnya.<br>
-                            • <strong>تَاءٌ</strong> : <em>Khabar Mubtada'</em> (خبر المبتدأ) marfu' dengan tanda Dhommah Zhahirah (tanwin).<br>
-                            • <strong>أَوْ</strong> : <em>Harf 'Athaf</em> (حرف عطف) berfungsi sebagai pilihan/rincian (للتخيير/التقسيم), مبني على السكون.<br>
-                            • <strong>أَلِفْ</strong> : <em>Ma'thuf</em> (معطوف) di-'athaf-kan kepada kata <em>تَاءٌ</em>, berstatus marfu' dengan Dhommah Muqaddarah, disukunkan huruf akhirnya karena menjaga rima waqaf bait syi'ir.`
-                        },
-                        {
-                            keywords: ['3 posisi', 'posisi i\'rab', 'contoh analisis i\'rab kata isim maqshur', 'rafa nashab jar'],
-                            response: `<strong>Contoh Analisis I'rab Isim Maqshur dalam 3 Posisi I'rab (Rafa', Nashab, Jar):</strong><br><br>
-                            <strong>1. Posisi Rafa' (sebagai Fa'il):</strong><br>
-                            <span class="arabic-text text-base font-bold text-amber-300">جَاءَ الْفَتَى</span> (Al-Fataa telah datang)<br>
-                            • <em>الْفَتَى</em> : Fa'il marfu' dengan tanda <strong>Dhommah Muqaddarah</strong> di atas Alif karena terhalang udzur artikulasi (<em>At-Ta'adzdzur</em>).<br><br>
-                            <strong>2. Posisi Nashab (sebagai Maf'ul Bih):</strong><br>
-                            <span class="arabic-text text-base font-bold text-amber-300">رَأَيْتُ الْفَتَى</span> (Saya melihat Al-Fataa)<br>
-                            • <em>الْفَتَى</em> : Maf'ul Bih manshub dengan tanda <strong>Fathah Muqaddarah</strong> di atas Alif karena <em>At-Ta'adzdzur</em>.<br><br>
-                            <strong>3. Posisi Jar (sebagai Majrur Harf Jar):</strong><br>
-                            <span class="arabic-text text-base font-bold text-amber-300">مَرَرْتُ بِالْفَتَى</span> (Saya berjalan melewati Al-Fataa)<br>
-                            • <em>الْفَتَى</em> : Isim majrur dengan tanda <strong>Kasrah Muqaddarah</strong> di atas Alif karena <em>At-Ta'adzdzur</em>.`
-                        },
-                        {
-                            keywords: ['fi\'il mudhari', 'fiil mudhari', 'mu\'tal akhir', 'mutal akhir'],
-                            response: `<strong>Kaidah I'rab Fi'il Mudhari' Mu'tal Akhir di dalam Al-Qur'an:</strong><br><br>
-                            Fi'il Mudhari' Mu'tal Akhir (diakhiri Wawu, Ya', atau Alif) memiliki hukum I'rab khusus:<br><br>
-                            1. <strong>Kondisi Rafa' (Terbebas dari Amil):</strong> Ditandai dengan <strong>Dhommah Muqaddarah</strong> di akhir huruf illat.<br>
-                            • Contoh Al-Qur'an: <span class="arabic-text">وَاللَّهُ يَدْعُو إِلَى دَارِ السَّلَامِ</span> (Kata <em>يَدْعُو</em> marfu' dengan Dhommah Muqaddarah).<br><br>
-                            2. <strong>Kondisi Nashab (Didahului Amil Nashib seperti Lan, An):</strong><br>
-                            • Mu'tal Wawu & Ya': Ditandai dengan <strong>Fathah Zhahirah</strong> (tampak jelas) karena ringan diucapkan.<br>
-                            • Mu'tal Alif: Ditandai dengan <strong>Fathah Muqaddarah</strong>.<br>
-                            • Contoh Al-Qur'an: <span class="arabic-text">لَن نَّدْعُوَ مِن دُونِهِ إِلَٰهًا</span> (Kata <em>نَّدْعُوَ</em> manshub dengan Fathah Zhahirah).<br><br>
-                            3. <strong>Kondisi Jazm (Didahului Amil Jazim seperti Lam, Laa Nahyi):</strong> Ditandai dengan <strong>Membuang Huruf 'Illat (حَذْفُ حَرْفِ الْعِلَّةِ)</strong>.<br>
-                            • Contoh Al-Qur'an: <span class="arabic-text">وَلَا تَمْشِ فِي الْأَرْضِ مَرَحًا</span> (Kata <em>تَمْشِ</em> majzum dengan membuang huruf Ya').`
-                        },
-                        {
-                            keywords: ['basrah', 'kufah', 'madd al-maqshur', 'perbedaan basrah', 'madd al-maqsur'],
-                            response: `<strong>Perbedaan Ulama Basrah vs. Kufah tentang Madd al-Maqshur:</strong><br><br>
-                            <strong>1. Madzhab Kufah (Membolehkan):</strong><br>
-                            Ulama Kufah membolehkan memanjangkan Isim Maqshur menjadi Mamdud dalam puisi (*Madd al-Maqshur*) karena darurat syi'ir. Dalil utama mereka adalah Syahid 537:<br>
-                            <span class="arabic-text text-base">فَلَا فَقْرٌ يَدُومُ وَلَا غِنَاءُ</span><br>
-                            Kata <em>غِنَاءُ</em> di sini asalnya adalah Isim Maqshur <em>غِنًى</em> (kekayaan), lalu dipanjangkan menjadi <em>غِنَاءُ</em> demi rima.<br><br>
-                            <strong>2. Madzhab Basrah (Melarang Keras):</strong><br>
-                            Ulama Basrah menolak dalil tersebut dan menakwilkan bahwa kata <em>غِنَاء</em> pada syair tersebut bukan masdar dari fi'il <em>غَنِيَ</em> (yang maqshur), melainkan masdar dari fi'il <em>غَانَيْتُ</em> yang wazannya memang bermakna mamdud sejak awal.<br><br>
-                            <strong>3. Penilaian Ibnu Hisyam (Awdhahul Masalik):</strong><br>
-                            Ibnu Hisyam mematahkan takwil Ulama Basrah dan menyifatinya sebagai takwil yang sangat dipaksakan (*Ta'assuf*). Beliau cenderung mendukung kelonggaran Madzhab Kufah dalam konteks *Dharurah Syi'ir*.`
-                        },
-                        {
-                            keywords: ['maqshur', 'maqsur', 'makshur', 'apa itu maqshur', 'pengertian maqshur'],
-                            response: `<strong>Isim Maqshur (الْمَقْصُورُ)</strong> adalah setiap Isim Mu'rab yang diakhiri oleh huruf <strong>Alif Lazimah (Alif tetap)</strong> dan huruf sebelumnya berharakat Fathah.<br><br>
-                            <strong>Contoh Utama:</strong><br>
-                            • <em>الفَتَى</em> (Al-Fata - Pemuda)<br>
-                            • <em>حُبْلَى</em> (Hubla - Wanita hamil)<br>
-                            • <em>المُصْطَفَى</em> (Al-Musthafa - Orang pilihan)<br><br>
-                            <strong>Karakteristik Utama (Syarah Awdhahul Masalik):</strong><br>
-                            1. <strong>Tanda I'rab Tersembunyi (Muqaddarah):</strong> Tanda Rafa' (Dhommah), Nashab (Fathah), dan Jar (Kasrah) semuanya disembunyikan pada huruf Alif karena terhalang udzur artikulasi (<em>At-Ta'adzdzur</em>).<br>
-                            2. <strong>Klasifikasi Qiyasi & Sama'i:</strong> Isim Maqshur ada yang berumus baku sesuai padanan kata sehat (<em>Nazhiir</em>) seperti masdar <em>جَوًى</em> (Nazhiir: <em>أَسَفٌ</em>), dan ada yang murni hafalan dari lisan Arab (Sama'i) seperti <em>الحِجَا</em> (akal).`
-                        },
-                        {
-                            keywords: ['mamdud', 'mamdudah', 'apa itu mamdud', 'pengertian mamdud'],
-                            response: `<strong>Isim Mamdud (الْمَمْدُودُ)</strong> adalah setiap Isim Mu'rab yang diakhiri oleh huruf <strong>Hamzah (ء)</strong> yang didahului oleh <strong>Alif Za'idah (Alif tambahan)</strong>.<br><br>
-                            <strong>Contoh Utama:</strong><br>
-                            • <em>صَحْرَاءُ</em> (Shahraa' - Padang pasir)<br>
-                            • <em>حَمْرَاءُ</em> (Hamraa' - Merah feminin)<br>
-                            • <em>قَرَّاءٌ</em> (Qurraa' - Ahli ibadah/baca Al-Qur'an)<br><br>
-                            <strong>Empat Tipe Hamzah Mamdud (Syarah Ibnu Hisyam):</strong><br>
-                            1. <strong>Hamzah Asli:</strong> Bawaan akar kata (contoh: <em>قَرَّاءٌ</em> dari <em>قَرَأَ</em>).<br>
-                            2. <strong>Hamzah Ta'nits:</strong> Penanda feminin (contoh: <em>صَحْرَاءُ</em>).<br>
-                            3. <strong>Hamzah Ubahan (Badal min Ashl):</strong> Berasal dari Wawu/Ya (contoh: <em>كِسَاءٌ</em> dari <em>Kisaaw</em>).<br>
-                            4. <strong>Hamzah Ilhaq:</strong> Penyeimbang wazan (contoh: <em>عِلْبَاءٌ</em>).`
                         }
                     ],
 
@@ -1385,33 +1394,28 @@ Prinsip Utama Layanan Anda:
 
                     } catch (e) {
                         const lowerQ = q.toLowerCase();
-                        let internalMatch = null;
+                        
+                        // First search specific topic matches
+                        let internalMatch = this.internalKnowledge.find(item => 
+                            item.category === "topic" && item.keywords.some(kw => lowerQ.includes(kw.toLowerCase()))
+                        );
 
-                        for (const item of this.internalKnowledge) {
-                            const isMatch = item.keywords.some(kw => {
-                                const kwLower = kw.toLowerCase();
-                                if (kwLower.length <= 3) {
-                                    const regex = new RegExp(`\\b${kwLower}\\b`, 'i');
-                                    return regex.test(lowerQ);
-                                }
-                                return lowerQ.includes(kwLower);
-                            });
-
-                            if (isMatch) {
-                                internalMatch = item;
-                                break;
-                            }
+                        // If no topic matches, search greetings/intros
+                        if (!internalMatch) {
+                            internalMatch = this.internalKnowledge.find(item => 
+                                item.category === "greeting" && item.keywords.some(kw => lowerQ.includes(kw.toLowerCase()))
+                            );
                         }
 
                         let errorResponse = "";
                         if (internalMatch) {
-                            errorResponse = internalMatch.response + `<br><br><em class="text-[11px] text-amber-600/80">(Catatan: Dijawab menggunakan Pustaka Internal)</em>`;
+                            errorResponse = internalMatch.response + `\n\n*(Catatan: Dijawab menggunakan Pustaka Internal)*`;
                         } else if (!this.userApiKey || (e.message && (e.message.includes("unregistered") || e.message.includes("API key") || e.message.includes("400") || e.message.includes("403") || e.message.includes("identity")))) {
-                            errorResponse = `<strong>Koneksi Gemini 2.5 Flash Memerlukan API Key:</strong><br><br>
-                            Untuk mengajukan pertanyaan dinamis di luar materi internal, Anda dapat memasukkan <strong>Gemini API Key</strong> gratis dari Google AI Studio dengan mengeklik tombol <strong><i class="fa-solid fa-key text-amber-400"></i> Set API Key (Opsional)</strong> di sudut kanan atas tab Tanya AI.<br><br>
-                            <em>Atau, Anda dapat mengeklik contoh-contoh pertanyaan di atas yang sudah siap dijawab secara instan oleh pustaka Syarah internal!</em>`;
+                            errorResponse = `**Koneksi Gemini 2.5 Flash Memerlukan API Key:**\n\n` +
+                            `Untuk mengajukan pertanyaan dinamis di luar materi internal, Anda dapat memasukkan **Gemini API Key** gratis dari Google AI Studio dengan mengeklik tombol **Set API Key (Opsional)** di sudut kanan atas tab Tanya AI.\n\n` +
+                            `*Atau, Anda dapat mengeklik contoh-contoh pertanyaan di atas yang sudah siap dijawab secara instan oleh pustaka Syarah internal!*`;
                         } else {
-                            errorResponse = `Mohon maaf, terjadi gangguan koneksi ke Gemini Flash API: <em>${e.message || "Koneksi terputus"}</em>. Silakan periksa koneksi Anda dan coba beberapa saat lagi.`;
+                            errorResponse = `Mohon maaf, terjadi gangguan koneksi ke Gemini Flash API: *${e.message || "Koneksi terputus"}*. Silakan periksa koneksi Anda dan coba beberapa saat lagi.`;
                         }
                         
                         this.aiHistory.push({
